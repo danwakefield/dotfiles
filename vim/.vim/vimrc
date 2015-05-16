@@ -1,0 +1,403 @@
+set guioptions-=M
+set nocompatible
+filetype off
+
+if !empty(glob(expand('~/.vim/bundle')))
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+
+    Plugin 'gmarik/Vundle.vim'
+
+    "Snippets
+    Bundle 'SirVer/ultisnips'
+    Bundle 'honza/vim-snippets'
+
+    "Autocomplete
+    Bundle 'Valloric/YouCompleteMe'
+
+    " Language specific
+    Bundle "python.vim"
+    Bundle "http://github.com/chase/vim-ansible-yaml"
+    Bundle "http://github.com/fatih/vim-go"
+    Bundle "http://github.com/klen/python-mode"
+    Bundle "http://github.com/othree/html5.vim"
+    Bundle "http://github.com/shime/vim-livedown"
+    Bundle "http://github.com/tpope/vim-markdown"
+
+    " Git integration
+    Bundle "git.zip"
+    Bundle "fugitive.vim"
+
+    " Utility
+    Bundle "file-line"
+    Bundle "repeat.vim"
+    Bundle "surround.vim"
+    Bundle "Tabmerge"
+    Bundle "http://github.com/bling/vim-airline"
+    Bundle "http://github.com/godlygeek/tabular"
+    Bundle "http://github.com/kien/rainbow_parentheses.vim"
+    Bundle "http://github.com/majutsushi/tagbar"
+    Bundle "http://github.com/milkypostman/vim-togglelist"
+    Bundle "http://github.com/nathanaelkane/vim-indent-guides.git"
+    Bundle "http://github.com/scrooloose/nerdcommenter.git"
+    Bundle "http://github.com/scrooloose/syntastic"
+    Bundle "http://github.com/sjl/gundo.vim.git"
+    Bundle "http://github.com/terryma/vim-expand-region"
+    Bundle "http://github.com/tpope/vim-unimpaired.git"
+    Bundle "http://github.com/xolox/vim-easytags"
+    Bundle "http://github.com/xolox/vim-misc"
+    Bundle "http://github.com/xolox/vim-session"
+
+    " Buffers / Files
+    Bundle "http://github.com/danro/rename.vim"
+    Bundle "http://github.com/jlanzarotta/bufexplorer"
+    Bundle "http://github.com/kien/ctrlp.vim"
+    Bundle "http://github.com/scrooloose/nerdtree"
+
+    " Colors
+    Bundle "http://github.com/chriskempson/base16-vim"
+
+    call vundle#end()
+endif
+
+
+"""""""""
+" GENERAL
+"""""""""
+filetype on
+filetype plugin indent on
+syntax on
+set number
+set relativenumber
+set background=dark
+set title
+set wildmenu
+set wildmode=longest:full,full
+let mapleader = "\\"
+let g:mapleader = "\\"
+set noerrorbells
+set novb
+set wildignore+=*.o,*.obj,.git,*.pyc,*.swp,*.bak,*~
+set wildignore+=eggs/**
+set wildignore+=*.egg-info/**
+set mouse=a
+
+if has("gui_running")
+  "Highlight current line. Only in gvim since term on laptop wont work properly
+  set cursorline
+endif
+
+set ruler                           "Always show cursor
+set virtualedit=all                 "Fix to visual mode
+set scrolloff=3                     "keep cursorline 3 lines from top/bottom
+set backspace=indent,eol,start      "backspace over autoindent / EOL
+set showmatch                       "Show matching parens
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab               "Use spaces not tabs
+set shiftround              "Rounds indent to multiple of shiftwidth
+set formatoptions=croql     "Auto format text
+set textwidth=78
+set magic                   "use more egrep like regex
+set ignorecase              "ignore case in search
+set smartcase               "Unless search contains uppercase
+set lazyredraw              "Dont redraw when running macros
+set hlsearch                "Highlight search matches
+set incsearch               "Search while composing regex
+set nowrap                  "Dont wrap lines
+set nobackup                "Dont write junk files
+set nowb
+set noswapfile
+set autowrite
+set autowriteall
+set noautoread
+set autochdir               "Change to files dir
+set modeline
+set modelines=5
+set showcmd                 "autocomplete auto commands
+set report=0                "commands show changed line count
+set laststatus=2            "always show status
+set showtabline=2
+set foldenable              "Turn on folding
+set foldmethod=indent       "But dont autofold on open
+set foldlevel=100
+set splitright              "Hoz and vert splits appear
+set splitbelow              "below and to the right
+set shortmess+=filmnrxoOtT  "Abbrev. of messages (avoids 'hit enter')
+set viminfo="$HOME/.vim/viminfo"
+" Use geany-like whitespace indicators without any ugly line ending symbols
+if !empty(glob(expand('~/.vim/bundle')))
+    set list
+    set listchars=tab:·\ ,trail:˽
+endif
+
+" Return to last edit position when opening files
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" bash over sh
+let g:is_posix = 1
+let g:is_bash = 1
+
+"""""""""""
+" Commands
+"""""""""""
+" Force sudo write
+cnoremap w!! w !sudo tee % >/dev/null
+" Swap the jump to mark operators
+" we want to use ' to jump to line+column rather than
+" just line as it is closer than `
+nnoremap ' `
+nnoremap ` '
+" make Y work like D - yank to end of line
+nmap Y y$
+"Use semi colon rather than colon
+nnoremap ; :
+"jj exits insert mode
+inoremap jj <ESC>
+inoremap jk <ESC>:w<CR>
+" Allow j and k to work over wrapped lines.
+nnoremap j gj
+nnoremap k gk
+"Toggle code fold
+nnoremap <space> za
+" Change focus to window in direction
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" Join next line to current
+nnoremap J mzJ`z
+" Split Lines at cursor
+nnoremap S i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w
+" Resize splits
+nnoremap <left> <C-w><
+nnoremap <right> <C-w>>
+nnoremap <down> <C-w>-
+nnoremap <up> <C-w>+
+map <F1> :SaveSession
+map <F2> :NERDTreeToggle<CR>
+map <F3> :GundoToggle<CR>
+map <F4> :set spell!<CR>
+map <F5> :SyntasticCheck<CR>
+nnoremap <silent> <F7> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+map <F8> :TagbarToggle<CR>
+" Unhighlight matches
+nnoremap <leader><space> :noh<cr>
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :TabMerge right<CR>
+map <leader>c :clo<CR>
+"paste from system clipboard
+map <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
+"yank to system clipboard
+map <leader>y "+y
+vmap <leader>y "+y
+noremap <leader>v :e! $MYVIMRC<CR>
+noremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" H and L move right and left through tabs.
+map <S-H> gT
+map <S-L> gt
+" Open dir of current file in a file window
+" Also %% will expand to current dir on command line.
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+map <leader>et :tabe %%
+
+" Align on $SYMBOL
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a=> :Tabularize /=><CR>
+vmap <Leader>a=> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+nnoremap <leader>wg :YcmCompleter GoTo<CR>
+nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+
+
+" YouCompleteMe
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_goto_buffer_command = 'new-tab'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
+"NERDTree
+let g:NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeBookmarksFile = "$HOME/.vim/nerdtreebookmarks"
+
+"NERDCommenter
+let g:NERDSpaceDelims = 1
+
+" pymode
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+let g:pymode_lint = 0
+let g:pymode_virtualenv = 1
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_folding = 1
+
+" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_sort_aggregated_errors = 0
+
+let g:syntastic_python_checkers = ['pylint', 'pep8']
+let g:syntastic_python_pylint_args = '--rcfile=~/.config/pylintrc'
+
+let g:syntastic_sh_checkers = ['shellcheck']
+let g:syntastic_sh_shellcheck_args = '--shell=bash'
+
+let g:syntastic_go_checkers = ['golint', 'govet']
+
+" Session
+let g:session_autoload = 'no'
+let g:session_autosave = 'yes'
+let g:session_default_to_last = 'yes'
+let g:session_directory = '~/.vim/sessions'
+let g:session_autosave_periodic = 5
+let g:session_restart_environment = ['GOPATH']
+
+" easytags
+let g:easytags_async = 1
+let g:easytags_auto_highlight = 0
+let g:easytags_file = "~/.vim/tags/tags"
+let g:easytags_by_filetype = "~/.vim/tags"
+let g:tagbar_type_go = {
+            \ 'ctagstype' : 'go',
+            \ 'kinds' : [ 'p:package', 'i:imports:1', 'c:constants', 'v:variables',
+            \ 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
+            \ 'r:constructor', 'f:functions' ],
+            \ 'sro' : '.',
+            \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+            \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+            \ 'ctagsbin' : 'gotags',
+            \ 'ctagsargs' : '-sort -silent'
+            \ }
+
+" vim-go
+let g:go_bin_path = expand("~/code/go/bin")
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = 'goimports'
+let g:go_highlight_structs = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_textobj_enabled = 0
+au FileType go nmap <leader>gR <Plug>(go-run)
+au FileType go nmap <leader>gb <Plug>(go-build)
+au FileType go nmap <leader>gt <Plug>(go-test)
+au FileType go nmap <leader>gc <Plug>(go-coverage)
+au FileType go nmap <Leader>gds <Plug>(go-def-split)
+au FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>gdt <Plug>(go-def-tab)
+au FileType go nmap <Leader>gdb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>gdd <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gi <Plug>(go-implements)
+au FileType go nmap <Leader>gr <Plug>(go-rename)
+au BufEnter *.go setlocal fdm=indent
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_powerline_fonts = 1
+
+" CtrlP
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_switch_buffer = '0'
+
+if !empty(glob(expand('~/.vim/bundle')))
+    " Rainbow Parens
+    au VimEnter * RainbowParenthesesToggle
+    au Syntax * RainbowParenthesesLoadRound
+    au Syntax * RainbowParenthesesLoadSquare
+    au Syntax * RainbowParenthesesLoadBraces
+endif
+
+let g:ansible_options = {'ignore_blank_lines': 1}
+
+" Colors / Fonts
+let t_Co=256
+if !empty(glob(expand('~/.vim/bundle')))
+    colorscheme base16-google
+else
+    colorscheme koehler
+endif
+set background=dark
+set guifont=DejaVu\ Sans\ Mono\ For\ Powerline\ 10
+
+if exists("+undofile")
+    " undofile - This allows you to use undos after exiting and restarting
+    " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+    " :help undo-persistence
+    " This is only present in 7.3+
+    if isdirectory($HOME . '/.vim/undo') == 0
+    :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    endif
+    set undodir=./.vim-undo//
+    set undodir+=~/.vim/undo//
+    set undofile
+endif
+
+" veritcal split of buffer no
+function! VerticalSplitBufferU(buffer)
+    execute "vert belowright sb" a:buffer
+endfunction
+command! -nargs=1 Vsb call VerticalSplitBufferU(<f-args>)
+
+augroup vimrc
+    autocmd!
+augroup END
+
+autocmd vimrc FileType text,markdown,gitcommit setlocal nocindent
+autocmd vimrc FileType gitcommit setlocal spell
+au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Needs to go at the end for whatever reason
+set guioptions-=T
+
