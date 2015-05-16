@@ -17,7 +17,7 @@ fi
 
 ZSH_THEME="xiong-chiamiov-plus"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(rsync git debian extract common-aliases)
+plugins=(rsync git git-extras debian extract common-aliases autojump)
 
 source $ZSH/oh-my-zsh.sh
 . /usr/share/autojump/autojump.sh || echo "Install Autojump: ai autojump"
