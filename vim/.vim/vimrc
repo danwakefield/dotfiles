@@ -330,9 +330,9 @@ nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :TabMerge right<CR>
 nnoremap <leader>c :clo<CR>
-"paste from system clipboard
+" paste from system clipboard
 nnoremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
-"yank to system clipboard
+" yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>v :e! $MYVIMRC<CR>
