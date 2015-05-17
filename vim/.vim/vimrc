@@ -141,7 +141,7 @@ Plug 'http://github.com/scrooloose/syntastic'
     let g:syntastic_sort_aggregated_errors = 0
 
     let g:syntastic_python_checkers = ['pylint', 'pep8']
-    let g:syntastic_python_pylint_args = '--rcfile=~/.config/pylintrc'
+    let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
     let g:syntastic_sh_checkers = ['shellcheck']
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
@@ -258,8 +258,8 @@ else
     colorscheme koehler
 endif
 
-let mapleader = '\\'
-let g:mapleader = '\\'
+let mapleader = '\'
+let g:mapleader = '\'
 let g:is_bash = 1
 
 " Return to last edit position when opening files
