@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.config/ohmyzsh
+export ZSHCUSTOM=$HOME/.config/zsh_custom
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$XDG_CONFIG_HOME
 export VISUAL=vim
