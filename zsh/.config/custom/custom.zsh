@@ -1,1 +1,0 @@
-/home/admx/code/dotfiles/zshrc/custom.zsh

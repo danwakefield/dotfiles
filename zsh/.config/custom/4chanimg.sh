@@ -1,1 +1,0 @@
-/home/admx/code/shell/4chanimg.sh
