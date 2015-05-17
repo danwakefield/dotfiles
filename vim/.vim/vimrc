@@ -10,16 +10,18 @@ call plug#begin('~/.vim/bundle')
 Plug 'http://github.com/chriskempson/base16-vim'
 
 "Autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
-    let g:ycm_min_num_of_chars_for_completion = 2
-    let g:ycm_min_num_identifier_candidate_chars = 2
-    let g:ycm_collect_identifiers_from_tags_files = 1
-    let g:ycm_goto_buffer_command = 'new-tab'
-    let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    nnoremap <leader>wg :YcmCompleter GoTo<CR>
-    nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
-    nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+if has("+python")
+    Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+        let g:ycm_min_num_of_chars_for_completion = 2
+        let g:ycm_min_num_identifier_candidate_chars = 2
+        let g:ycm_collect_identifiers_from_tags_files = 1
+        let g:ycm_goto_buffer_command = 'new-tab'
+        let g:ycm_autoclose_preview_window_after_completion = 1
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        nnoremap <leader>wg :YcmCompleter GoTo<CR>
+        nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
+        nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+endif
 
 Plug 'honza/vim-snippets'
 Plug 'SirVer/ultisnips'
