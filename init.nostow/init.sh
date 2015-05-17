@@ -7,9 +7,9 @@ cd "$STOWFILE_ROOT"
 
 for stowd in *; do
     if [[ -d $stowd ]] && [[ $stowd != *nostow* ]]; then
-        stow --ignore '.*nostow.*' --restow -vv --target-dir "$STOW_TARGET" "$stowd"
+        stow --ignore '.*nostow.*' --restow -vv --target "$STOW_TARGET" "$stowd"
         rc=$?
-        if $rc; then
+        if [[ $rc -eq 0 ]]; then
             echo "--- $stowd installed successfully ---"
         else
             echo "!!! $stowd failed to instal !!!"
