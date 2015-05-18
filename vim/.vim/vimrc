@@ -10,7 +10,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'http://github.com/chriskempson/base16-vim'
 
 "Autocomplete
-if has("+python")
+if has("python")
     Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
         let g:ycm_min_num_of_chars_for_completion = 2
         let g:ycm_min_num_identifier_candidate_chars = 2
