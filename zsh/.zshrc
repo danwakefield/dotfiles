@@ -9,22 +9,13 @@ export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/go
 export TERM='xterm-256color'
 
-if [[ "$USER" == dan ]]; then
-    # HP specific settings.
-    export http_proxy=http://web-proxy.rose.hp.com:8080
-    export https_proxy=http://web-proxy.rose.hp.com:8080
-    export LANGUAGE="en_US.UTF-8"
-    export LC_ALL="en_US.UTF-8"
-    export LANG="en_US.UTF-8"
-    export LC_TYPE="en_US.UTF-8"
-fi
-
 ZSH_THEME="xiong-chiamiov-plus"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(rsync git git-extras debian extract common-aliases)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/autojump/autojump.sh || echo "Install Autojump: ai autojump"
+source $HOME/.custom_vars.sh || true
 
 # User configuration
 PATH="/sbin"
