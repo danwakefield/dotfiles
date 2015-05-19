@@ -7,7 +7,9 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'ScrollColors'
 Plug 'http://github.com/chriskempson/base16-vim'
+" Plug 'http://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
 "Autocomplete
 if has("python")
@@ -264,7 +266,7 @@ if has("gui_running")
     colorscheme base16-google
 else
     set background=dark
-    colorscheme koehler
+    colorscheme delek
 endif
 
 let mapleader = '\'
