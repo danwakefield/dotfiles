@@ -15,7 +15,7 @@ plugins=(rsync git git-extras debian extract common-aliases)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/autojump/autojump.sh || echo "Install Autojump: ai autojump"
-source $HOME/.custom_vars.sh || true
+[[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 
 # User configuration
 PATH="/sbin"
