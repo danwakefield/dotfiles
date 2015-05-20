@@ -5,6 +5,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall
 endif
 
+if empty(glob('~/.vim/bundle/'))
+    autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.vim/bundle')
 
 Plug 'ScrollColors'
@@ -340,7 +344,7 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :TabMerge right<CR>
-nnoremap <leader>c :clo<CR>
+nmap <leader>c :clo<CR>
 " paste from system clipboard
 nnoremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
 " yank to system clipboard
