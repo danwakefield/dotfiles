@@ -27,14 +27,14 @@ if has("python")
         nnoremap <leader>wg :YcmCompleter GoTo<CR>
         nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
         nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+
+    Plug 'honza/vim-snippets'
+    Plug 'SirVer/ultisnips'
+        let g:UltiSnipsExpandTrigger="<c-j>"
+        let g:UltiSnipsJumpForwardTrigger="<c-j>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 endif
-
-Plug 'honza/vim-snippets'
-Plug 'SirVer/ultisnips'
-    let g:UltiSnipsExpandTrigger="<c-j>"
-    let g:UltiSnipsJumpForwardTrigger="<c-j>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-
 
 " Language specific
 Plug 'http://github.com/hdima/python-syntax', {'for': 'python'}
@@ -137,8 +137,6 @@ Plug 'http://github.com/luochen1990/rainbow'
         \   }
         \}
 
-Plug 'http://github.com/majutsushi/tagbar'
-    map <F8> :TagbarToggle<CR>
 
 Plug 'http://github.com/milkypostman/vim-togglelist'
 Plug 'http://github.com/nathanaelkane/vim-indent-guides.git'
@@ -172,22 +170,26 @@ Plug 'http://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
 Plug 'http://github.com/tpope/vim-markdown'
 Plug 'http://github.com/jez/vim-superman'
 Plug 'http://github.com/tpope/vim-unimpaired.git'
-Plug 'http://github.com/xolox/vim-easytags'
-    let g:easytags_async = 1
-    let g:easytags_auto_highlight = 0
-    let g:easytags_file = "~/.vim/tags/tags"
-    let g:easytags_by_filetype = "~/.vim/tags"
-    let g:tagbar_type_go = {
-                \ 'ctagstype' : 'go',
-                \ 'kinds' : [ 'p:package', 'i:imports:1', 'c:constants', 'v:variables',
-                \ 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
-                \ 'r:constructor', 'f:functions' ],
-                \ 'sro' : '.',
-                \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
-                \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
-                \ 'ctagsbin' : 'gotags',
-                \ 'ctagsargs' : '-sort -silent'
-                \ }
+if has("python")
+    Plug 'http://github.com/majutsushi/tagbar'
+        map <F8> :TagbarToggle<CR>
+    Plug 'http://github.com/xolox/vim-easytags'
+        let g:easytags_async = 1
+        let g:easytags_auto_highlight = 0
+        let g:easytags_file = "~/.vim/tags/tags"
+        let g:easytags_by_filetype = "~/.vim/tags"
+        let g:tagbar_type_go = {
+                    \ 'ctagstype' : 'go',
+                    \ 'kinds' : [ 'p:package', 'i:imports:1', 'c:constants', 'v:variables',
+                    \ 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
+                    \ 'r:constructor', 'f:functions' ],
+                    \ 'sro' : '.',
+                    \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+                    \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+                    \ 'ctagsbin' : 'gotags',
+                    \ 'ctagsargs' : '-sort -silent'
+                    \ }
+endif
 
 Plug 'http://github.com/xolox/vim-misc'
 Plug 'http://github.com/xolox/vim-session'
