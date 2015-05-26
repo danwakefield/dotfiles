@@ -133,14 +133,14 @@ class-attribute-rgx=([A-Za-z_][A-Za-z0-9_]{2,30}|(__.*__))$
 inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
 
 # Good variable names which should always be accepted, separated by a comma
-good-names=a,b,c,d,e,f,g,h,i,k,m,n,o,p,q,r,s,t,v,w,x,y,z,_
+good-names=a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,v,w,x,y,z,_
 
 # Bad variable names which should always be refused, separated by a comma
 bad-names=foo,bar,baz,toto,tutu,tata
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.
-no-docstring-rgx=(__.*__|[Tt]est.*)
+no-docstring-rgx=(__.*__|[Tt]est.*|main)
 
 # Minimum line length for functions/classes that require docstrings, shorter
 # ones are exempt.
@@ -218,7 +218,7 @@ defining-attr-methods=__init__,__new__,setUp
 valid-classmethod-first-arg=cls
 
 # List of valid names for the first argument in a metaclass class method.
-valid-metaclass-classmethod-first-arg=mcs
+valid-metaclass-classmethod-first-arg=mcs,meta
 
 
 [IMPORTS]
@@ -242,7 +242,7 @@ int-import-graph=
 [DESIGN]
 
 # Maximum number of arguments for function / method
-max-args=5
+max-args=7
 
 # Argument names that match this expression will be ignored. Default to name
 # with leading underscore
