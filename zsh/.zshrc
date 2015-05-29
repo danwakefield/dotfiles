@@ -14,10 +14,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(rsync git git-extras debian extract common-aliases)
 
 source $ZSH/oh-my-zsh.sh
-[[ -r /usr/share/autojump/autojump.sh ]] \
-    && source /usr/share/autojump/autojump.sh \
-    || echo "Install Autojump: ai autojump"
-[[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 
 # User configuration
 PATH="/sbin"
@@ -34,5 +30,8 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:/usr/local/games"
 export PATH
 
-
+[[ -r /usr/share/autojump/autojump.sh ]] \
+    && source /usr/share/autojump/autojump.sh \
+    || echo "Install Autojump: ai autojump"
+[[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 setopt HIST_IGNORE_SPACE

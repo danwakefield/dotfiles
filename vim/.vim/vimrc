@@ -139,6 +139,7 @@ Plug 'http://github.com/luochen1990/rainbow'
 
 
 Plug 'http://github.com/milkypostman/vim-togglelist'
+Plug 'http://github.com/jlanzarotta/bufexplorer'
 Plug 'http://github.com/nathanaelkane/vim-indent-guides.git'
 Plug 'http://github.com/scrooloose/nerdcommenter.git'
     let g:NERDSpaceDelims = 1
@@ -160,7 +161,7 @@ Plug 'http://github.com/scrooloose/syntastic'
     let g:syntastic_sh_checkers = ['shellcheck']
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
 
-    let g:syntastic_go_checkers = ['golint', 'govet']
+    let g:syntastic_go_checkers = ['golint', 'go vet']
 
 Plug 'http://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     map <F3> :GundoToggle<CR>
