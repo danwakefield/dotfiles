@@ -163,6 +163,8 @@ Plug 'http://github.com/scrooloose/syntastic'
 
     let g:syntastic_go_checkers = ['golint', 'go vet']
 
+    let g:syntastic_asm_checkers = ['nasm']
+
 Plug 'http://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     map <F3> :GundoToggle<CR>
 
