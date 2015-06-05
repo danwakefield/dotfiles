@@ -194,6 +194,7 @@ if has("python")
                     \ }
 endif
 
+Plug 'KabbAmine/zeavim.vim'
 Plug 'http://github.com/xolox/vim-misc'
 Plug 'http://github.com/xolox/vim-session'
     map <F1> :SaveSession
@@ -271,7 +272,7 @@ set listchars=tab:·\ ,trail:˽
 
 if has("gui_running")
     set background=dark
-    set guifont=DejaVu\ Sans\ Mono\ For\ Powerline\ 10
+    set guifont=Office\ Code\ Pro\ Medium\ 10
     set guioptions-=T
     colorscheme base16-google
 else
