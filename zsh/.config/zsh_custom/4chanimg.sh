@@ -12,12 +12,12 @@ function 4cdl {
     mkdir ${folder_name}
     cd ${folder_name}
 
-    image_urls=($(wget -O - "$thread_url" |\
-                    tr ">" "\n" |\
-                    \grep "i.4cdn.org" |\
-                    \grep "fileThumb" |\
-                    awk -F\" '{print $4}' |\
-                    sed "s/^\/\///"))
+    image_urls=($(wget -O - "$thread_url" \
+                    | tr ">" "\n" \
+                    | \grep "i.4cdn.org" \
+                    | \grep "fileThumb" \
+                    | awk -F\" '{print $4}' \
+                    | sed "s/^\/\///"))
 
     IFS=$'\n'
     for img in ${image_urls[*]}; do
