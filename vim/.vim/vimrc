@@ -118,7 +118,7 @@ Plug 'http://github.com/godlygeek/tabular'
 
 Plug 'http://github.com/kien/ctrlp.vim'
     let g:ctrlp_cmd = 'CtrlPMRU'
-    let g:ctrlp_working_path_mode = 0
+    let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
 
 Plug 'http://github.com/luochen1990/rainbow'
