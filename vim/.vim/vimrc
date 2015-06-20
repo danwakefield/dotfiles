@@ -41,6 +41,7 @@ Plug 'http://github.com/hdima/python-syntax', {'for': 'python'}
     let python_highlight_all = 1
     let python_highlight_space_errors = 0
 Plug 'http://github.com/hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'http://github.com/helino/vim-nasm', {'for': 'nasm'}
 
 Plug 'http://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_bin_path = expand("~/code/go/bin")
@@ -308,6 +309,11 @@ augroup txt_files
     autocmd!
     autocmd FileType text,markdown,gitcommit setl nocindent spell textwidth=0 wrapmargin=0 wrap
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+augroup END
+
+augroup asm
+    autocmd!
+    autocmd FileType asm setlocal ft=nasm
 augroup END
 
 " Force sudo write

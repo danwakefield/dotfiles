@@ -310,6 +310,29 @@ REGEXS = [
     [\W_]               # non alphanum char
     (?P<EN>.*)          # NG(EN) greedily trying to grab episode name"""
     ,re.IGNORECASE | re.VERBOSE),
+
+    re.compile("""
+    (?P<SN>.*)
+    [\W_]
+    (?P<S>\d{2})
+    (?P<E>\d{2})
+    [\W_]
+    (?P<EN>.*)
+    """, re.IGNORECASE | re.VERBOSE),
+
+    re.compile("""
+    (?P<E>\d{1,2})
+    [\W_]
+    (?P<SN>.*)
+    [\W_]
+    (?P<EN>.*)
+    """, re.IGNORECASE | re.VERBOSE),
+
+    re.compile("""
+    (?P<E>\d{1,2})
+    [\W_]
+    (?P<EN>.*)
+    """, re.IGNORECASE | re.VERBOSE),
 ]
 
 LOGGER = logging.getLogger()
