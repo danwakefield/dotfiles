@@ -31,6 +31,6 @@ alias p='false'
 unalias p
 unalias j
 
-if [[ -r "$ZSH/custom/4chanimg.sh" ]]; then
-    source "$ZSH/custom/4chanimg.sh"
+if [[ -r "$ZSH_CUSTOM/4chanimg.sh" ]]; then
+    source "$ZSH_CUSTOM/4chanimg.sh"
 fi

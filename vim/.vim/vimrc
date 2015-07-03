@@ -71,7 +71,7 @@ Plug 'http://github.com/chase/vim-ansible-yaml'
     let g:ansible_options = {'ignore_blank_lines': 1}
 
 Plug 'http://github.com/othree/html5.vim'
-Plug 'http://github.com/shime/vim-livedown'
+Plug 'http://github.com/suan/vim-instant-markdown'
 
 " Git integration
 Plug 'git.zip'
