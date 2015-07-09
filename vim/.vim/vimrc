@@ -225,6 +225,7 @@ set wildignore+=eggs/**
 set wildignore+=*.egg-info/**
 set noerrorbells
 set novisualbell t_vb=              "No Beeping / flashing
+set gdefault                        " Default to replacing all occurances use of /g reverses
 set mouse=a
 set mousehide
 set cursorline
@@ -253,7 +254,7 @@ set nowb
 set noswapfile
 set autowrite
 set autowriteall
-set noautoread
+set autoread
 set autochdir               "Change to files dir
 set modeline
 set modelines=2
@@ -328,7 +329,11 @@ nmap Y y$
 nnoremap ; :
 "jj exits insert mode
 inoremap jj <ESC>
+inoremap jJ <ESC>
+inoremap JJ <ESC>
 inoremap jk <ESC>:w<CR>
+inoremap jK <ESC>:w<CR>
+inoremap JK <ESC>:w<CR>
 " Allow j and k to work over wrapped lines.
 nnoremap j gj
 nnoremap k gk
