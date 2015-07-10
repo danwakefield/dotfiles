@@ -72,6 +72,8 @@ Plug 'http://github.com/chase/vim-ansible-yaml'
 
 Plug 'http://github.com/othree/html5.vim'
 Plug 'http://github.com/suan/vim-instant-markdown'
+	let g:instant_markdown_autostart = 0
+	" use :InstantMarkdownPreview
 
 " Git integration
 Plug 'git.zip'
