@@ -6,7 +6,7 @@ alias gunmod='git status | grep "modified" | awk "{print \$2}" | xargs -I{} git 
 alias gv='gvim --remote-silent'
 alias cl='clear'
 alias gh='\gb'
-alias json='| python -m json.tool'
+alias json='python -m json.tool'
 
 alias grep='egrep --color=auto'
 alias sgrep='\ag --context=5 --noheading --color-path 35 --color-line-number 32 --follow --path-to-agignore ~/.config/agignore '
