@@ -27,6 +27,7 @@ if has("python")
         nnoremap <leader>wg :YcmCompleter GoTo<CR>
         nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
         nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+    Plug 'http://github.com/rdnetto/YCM-Generator', {'tag': 'stable'}
 
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
