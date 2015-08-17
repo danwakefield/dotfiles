@@ -3,5 +3,5 @@
 git checkout ohmyzsh
 git pull --rebase
 git checkout master
-git merge --squash -s subtree --no-commit ohmyzsh
+git merge -X theirs --squash -s subtree --no-commit ohmyzsh
 
