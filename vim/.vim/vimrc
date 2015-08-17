@@ -294,6 +294,12 @@ if has("autocmd")
     autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+function WriteCreatingDirs()
+    execute ':silent !mkdir -p %:h'
+    write
+endfunction
+command W call WriteCreatingDirs()
+
 if exists("+undofile")
     " undofile - This allows you to use undos after exiting and restarting
     " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo

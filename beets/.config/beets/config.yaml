@@ -6,116 +6,13 @@ import:
 
 plugins: fromfilename
 
+directory: ~/music
+ignore: ._* *~ .DS_Store *.ini *.txt
+library: ~/.config/beets/beetslibrary.blb
+asciify_paths: yes
+
 paths:
     default: $albumartist/$album/$track-$title
     singleton: Rnd/$artist-$title
     comp: VA/$album/$track-$title
-    replace: '[\\/] <strip>
-        ^\. _
-        0x85		...	
-        0x88		^	
-        0x8A		S	
-        0x8C		OE	
-        0x96		-	
-        0x97		-	
-        0x99		_tm_
-        0x9A		s	
-        0x9C		oe	
-        0x9F		Y	
-        0xA2		_cent_
-        0xA3		_pound_
-        0xA5		_yen_
-        0xA9		_copy_
-        0xAE		_reg_
-        0xB2		2
-        0xB3		3
-        0xB5		b
-        0xB6		_pp_
-        0xB9		1
-        0xC0		A	
-        0xC1		A	
-        0xC2		A	
-        0xC3		A	
-        0xC4		A	
-        0xC5		A	
-        0xC6		AE	
-        0xC7		C	
-        0xC8		E	
-        0xC9		E	
-        0xCA		E	
-        0xCB		E	
-        0xCC		I	
-        0xCD		I	
-        0xCE		I	
-        0xCF		I	
-        0xD0		TH	
-        0xD1		N	
-        0xD2		O	
-        0xD3		O	
-        0xD4		O	
-        0xD5		O	
-        0xD6		O	
-        0xD7		x	
-        0xD8		O	
-        0xD9		U	
-        0xDA		U	
-        0xDB		U	
-        0xDC		U	
-        0xDD		Y	
-        0xDE		TH	
-        0xDF		ss	
-        0xE0		a	
-        0xE1		a	
-        0xE2		a	
-        0xE3		a	
-        0xE4		a	
-        0xE5		a	
-        0xE6		ae	
-        0xE7		c	
-        0xE8		e	
-        0xE9		e	
-        0xEA		e	
-        0xEB		e	
-        0xEC		i	
-        0xED		i	
-        0xEE		i	
-        0xEF		i	
-        0xF0		th	
-        0xF1		n	
-        0xF2		o	
-        0xF3		o	
-        0xF4		o	
-        0xF5		o	
-        0xF6		o	
-        0xF8		o	
-        0xF9		u	
-        0xFA		u	
-        0xFB		u	
-        0xFC		u	
-        0xFD		y	
-        0xFE		th	
-        0xFF		y	
-        0xC4		AE	
-        0xD6		OE	
-        0xDC		UE	
-        0x2010		-	
-        0x2011		-	
-        0x2012		-	
-        0x2013		-	
-        0x2014		-	
-        0x2015		-	
-        0x2026		...	
-        0xE4		ae	
-        0xF6		oe	
-        0xFC		ue	
-        &   and
-        \(*\) <strip>
-        , <strip>
-        [\x00-\x1f] _
-        [<>:"\?\*\|] <strip>
-        \.$ _
-        \s+$ <strip>
-        \s _'
-directory: ~/music
-ignore: ._* *~ .DS_Store *.ini *.txt
-library: ~/.config/beets/beetslibrary.blb
+    albumtype:soundtrack: Soundtracks/$album/$track-$title
