@@ -1,3 +1,4 @@
+> cat zsh/.config/ohmyzsh/plugins/git/git.plugin.zsh
 # Query/use custom command for `git`.
 zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 : ${_omz_git_git_cmd:=git}
@@ -84,10 +85,7 @@ alias gcs='git commit -S'
 
 alias gd='git diff'
 alias gdca='git diff --cached'
-<<<<<<< HEAD
-=======
 alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
->>>>>>> ohmyzsh
 alias gdt='git diff-tree --no-commit-id --name-only -r'
 gdv() { git diff -w "$@" | view - }
 compdef _git gdv=git-diff
@@ -134,7 +132,6 @@ ggl && ggp
 else
 ggl "${*}" && ggp "${*}"
 fi
-<<<<<<< HEAD
 }
 compdef _git ggpnp=git-checkout
 alias ggsup='git branch --set-upstream-to=origin/$(current_branch)'
@@ -142,15 +139,6 @@ ggu() {
 [[ "$#" != 1 ]] && local b="$(current_branch)"
 git pull --rebase origin "${b:=$1}"
 }
-=======
-}
-compdef _git ggpnp=git-checkout
-alias ggsup='git branch --set-upstream-to=origin/$(current_branch)'
-ggu() {
-[[ "$#" != 1 ]] && local b="$(current_branch)"
-git pull --rebase origin "${b:=$1}"
-}
->>>>>>> ohmyzsh
 compdef _git ggu=git-checkout
 alias ggpur='ggu'
 compdef _git ggpur=git-checkout
@@ -225,19 +213,13 @@ alias gsts='git stash show --text'
 alias gsu='git submodule update'
 
 alias gts='git tag -s'
-<<<<<<< HEAD
-=======
 alias gtv='git tag | sort -V'
->>>>>>> ohmyzsh
 
 alias gunignore='git update-index --no-assume-unchanged'
 alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 alias gup='git pull --rebase'
 alias gupv='git pull --rebase -v'
-<<<<<<< HEAD
-=======
 alias glum='git pull upstream master'
->>>>>>> ohmyzsh
 
 alias gvt='git verify-tag'
 
