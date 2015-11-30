@@ -1,4 +1,3 @@
-> cat zsh/.config/ohmyzsh/plugins/git/git.plugin.zsh
 # Query/use custom command for `git`.
 zstyle -s ":vcs_info:git:*:-all-" "command" _omz_git_git_cmd
 : ${_omz_git_git_cmd:=git}
