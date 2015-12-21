@@ -28,21 +28,12 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/.composer/vendor/bin"
 PATH="$PATH:/usr/games"
 PATH="$PATH:/usr/local/games"
-PATH="$PATH:$HOME/.rbenv/bin"
-PATH="$PATH:$HOME/.rbenv/plugins/ruby-build/bin"
 PATH="$PATH:/usr/local/heroku/bin"
+PATH="$PATH:$HOME/code/pebble/sdk/bin"
 export PATH
-
-# Ruby for Uni
-eval "$(rbenv init -)"
 
 [[ -r /usr/share/autojump/autojump.sh ]] \
     && source /usr/share/autojump/autojump.sh \
     || echo "Install Autojump: ai autojump"
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 setopt HIST_IGNORE_SPACE
-
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/code/py
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh

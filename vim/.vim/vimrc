@@ -1,4 +1,6 @@
 " :vim fdm=marker:
+scriptencoding utf-8
+set encoding=utf-8
 
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -12,8 +14,8 @@ endif
 call plug#begin('~/.vim/bundle')
 
 " Plug 'ScrollColors'
-Plug 'http://github.com/chriskempson/base16-vim'
-" Plug 'http://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
+Plug 'https://github.com/chriskempson/base16-vim'
+" Plug 'https://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
 "Autocomplete
 if has("python")
@@ -27,7 +29,7 @@ if has("python")
         nnoremap <leader>wg :YcmCompleter GoTo<CR>
         nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
         nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
-    Plug 'http://github.com/rdnetto/YCM-Generator', {'tag': 'stable'}
+    Plug 'https://github.com/rdnetto/YCM-Generator', {'tag': 'stable'}
 
     Plug 'honza/vim-snippets'
     Plug 'SirVer/ultisnips'
@@ -36,16 +38,17 @@ if has("python")
         let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 endif
+Plug 'https://github.com/AndrewRadev/inline_edit.vim'
 
 " Language specific
-Plug 'http://github.com/hdima/python-syntax', {'for': 'python'}
+Plug 'https://github.com/hdima/python-syntax', {'for': 'python'}
     let python_highlight_all = 1
     let python_highlight_space_errors = 0
-Plug 'http://github.com/hynek/vim-python-pep8-indent', {'for': 'python'}
-Plug 'http://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
-Plug 'http://github.com/helino/vim-nasm', {'for': 'nasm'}
+Plug 'https://github.com/hynek/vim-python-pep8-indent', {'for': 'python'}
+Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
+Plug 'https://github.com/helino/vim-nasm', {'for': 'nasm'}
 
-Plug 'http://github.com/fatih/vim-go', {'for': 'go'}
+Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_bin_path = expand("~/code/go/bin")
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command = 'goimports'
@@ -69,11 +72,11 @@ Plug 'http://github.com/fatih/vim-go', {'for': 'go'}
         autocmd BufEnter *.go setlocal fdm=indent
     augroup END
 
-Plug 'http://github.com/chase/vim-ansible-yaml'
+Plug 'https://github.com/chase/vim-ansible-yaml'
     let g:ansible_options = {'ignore_blank_lines': 1}
 
-Plug 'http://github.com/othree/html5.vim'
-Plug 'http://github.com/suan/vim-instant-markdown'
+Plug 'https://github.com/othree/html5.vim'
+Plug 'https://github.com/suan/vim-instant-markdown'
 	let g:instant_markdown_autostart = 0
 	" use :InstantMarkdownPreview
 
@@ -85,7 +88,7 @@ Plug 'fugitive.vim'
 Plug 'repeat.vim'
 Plug 'surround.vim'
 Plug 'Tabmerge'
-Plug 'http://github.com/bling/vim-airline'
+Plug 'https://github.com/bling/vim-airline'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#left_sep = ' '
@@ -102,8 +105,8 @@ Plug 'http://github.com/bling/vim-airline'
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
 
-Plug 'http://github.com/danro/rename.vim'
-Plug 'http://github.com/godlygeek/tabular'
+Plug 'https://github.com/danro/rename.vim'
+Plug 'https://github.com/godlygeek/tabular'
     nmap <Leader>a& :Tabularize /&<CR>
     vmap <Leader>a& :Tabularize /&<CR>
     nmap <Leader>a= :Tabularize /=<CR>
@@ -121,12 +124,12 @@ Plug 'http://github.com/godlygeek/tabular'
     nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
     vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
-Plug 'http://github.com/kien/ctrlp.vim'
+Plug 'https://github.com/kien/ctrlp.vim'
     let g:ctrlp_cmd = 'CtrlPMRU'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
 
-Plug 'http://github.com/luochen1990/rainbow'
+Plug 'https://github.com/luochen1990/rainbow'
     let g:rainbow_active = 1
     let g:rainbow_conf = {
         \   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
@@ -143,18 +146,17 @@ Plug 'http://github.com/luochen1990/rainbow'
         \}
 
 
-Plug 'http://github.com/milkypostman/vim-togglelist'
-Plug 'http://github.com/jlanzarotta/bufexplorer'
-Plug 'http://github.com/nathanaelkane/vim-indent-guides.git'
-Plug 'http://github.com/scrooloose/nerdcommenter.git'
-    let g:NERDSpaceDelims = 1
+Plug 'https://github.com/milkypostman/vim-togglelist'
+Plug 'https://github.com/jlanzarotta/bufexplorer'
+Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
+Plug 'https://github.com/tpope/vim-commentary'
 
-Plug 'http://github.com/scrooloose/nerdtree'
+Plug 'https://github.com/scrooloose/nerdtree'
     map <F2> :NERDTreeToggle<CR>
     let g:NERDTreeIgnore = ['\.pyc$']
     let g:NERDTreeBookmarksFile = "$HOME/.vim/nerdtreebookmarks"
 
-Plug 'http://github.com/scrooloose/syntastic'
+Plug 'https://github.com/scrooloose/syntastic'
     map <F5> :SyntasticCheck<CR>
     let g:syntastic_always_populate_loc_list = 1
     let g:syntastic_aggregate_errors = 1
@@ -170,18 +172,18 @@ Plug 'http://github.com/scrooloose/syntastic'
 
     let g:syntastic_asm_checkers = ['nasm']
 
-Plug 'http://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
+Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     map <F3> :GundoToggle<CR>
 
-Plug 'http://github.com/terryma/vim-expand-region'
-Plug 'http://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
-Plug 'http://github.com/tpope/vim-markdown'
-Plug 'http://github.com/jez/vim-superman'
-Plug 'http://github.com/tpope/vim-unimpaired.git'
+Plug 'https://github.com/terryma/vim-expand-region'
+Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
+Plug 'https://github.com/tpope/vim-markdown'
+Plug 'https://github.com/jez/vim-superman'
+Plug 'https://github.com/tpope/vim-unimpaired.git'
 if has("python")
-    Plug 'http://github.com/majutsushi/tagbar'
+    Plug 'https://github.com/majutsushi/tagbar'
         map <F8> :TagbarToggle<CR>
-    Plug 'http://github.com/xolox/vim-easytags'
+    Plug 'https://github.com/xolox/vim-easytags'
         let g:easytags_async = 1
         let g:easytags_auto_highlight = 0
         let g:easytags_file = "~/.vim/tags/tags"
@@ -200,8 +202,8 @@ if has("python")
 endif
 
 Plug 'KabbAmine/zeavim.vim'
-Plug 'http://github.com/xolox/vim-misc'
-Plug 'http://github.com/xolox/vim-session'
+Plug 'https://github.com/xolox/vim-misc'
+Plug 'https://github.com/xolox/vim-session'
     map <F1> :SaveSession
     let g:session_autoload = 'no'
     let g:session_autosave = 'yes'
@@ -214,7 +216,7 @@ Plug 'http://github.com/xolox/vim-session'
     set sessionoptions-=options
 
 " Colors
-Plug 'http://github.com/chriskempson/base16-vim'
+Plug 'https://github.com/chriskempson/base16-vim'
 
 call plug#end()
 
@@ -281,7 +283,7 @@ if has("gui_running")
     set guifont=Office\ Code\ Pro\ Medium\ 10
     set guioptions-=T
     set lines=999
-    set columns=999
+    set columns=400
     colorscheme base16-google
 else
     set background=dark
