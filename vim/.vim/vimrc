@@ -39,6 +39,7 @@ if has("python")
 
 endif
 Plug 'https://github.com/AndrewRadev/inline_edit.vim'
+Plug 'https://github.com/muziqiushan/vim-bufonly'
 
 " Language specific
 Plug 'https://github.com/hdima/python-syntax', {'for': 'python'}
@@ -145,7 +146,7 @@ Plug 'https://github.com/luochen1990/rainbow'
         \   }
         \}
 
-
+Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/milkypostman/vim-togglelist'
 Plug 'https://github.com/jlanzarotta/bufexplorer'
 Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
@@ -171,6 +172,9 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_go_checkers = ['golint', 'go vet']
 
     let g:syntastic_asm_checkers = ['nasm']
+
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     map <F3> :GundoToggle<CR>
@@ -283,7 +287,7 @@ if has("gui_running")
     set guifont=Office\ Code\ Pro\ Medium\ 10
     set guioptions-=T
     set lines=999
-    set columns=400
+    set columns=220
     colorscheme base16-google
 else
     set background=dark
@@ -393,3 +397,4 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>es :sp %%
 nnoremap <leader>ev :vsp %%
 nnoremap <leader>et :tabe %%
+nnoremap <leader>ie :InlineEdit<CR>
