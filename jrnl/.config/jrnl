@@ -8,7 +8,7 @@
   "highlight": true, 
   "journals": {
     "default": "~/Dropbox/journals/journal.txt",
-    "diss": "~/Dropbox/journals/diss.txt",
+    "diss": "~/Dropbox/journals/diss.txt"
   }, 
   "tagsymbols": "@"
 }
