@@ -8,9 +8,8 @@ function 4cdl {
         folder_name="$RANDOM$RANDOM"
     fi
 
-    cd "$HOME/images/4chan"
-    mkdir ${folder_name}
-    cd ${folder_name}
+    mkdir -p "$HOME/images/4chan/${folder_name}"
+    cd "$HOME/images/4chan/${folder_name}"
 
     image_urls=($(wget -O - "$thread_url" \
                     | tr ">" "\n" \
