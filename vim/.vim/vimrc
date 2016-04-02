@@ -169,7 +169,7 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_sh_checkers = ['shellcheck']
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
 
-    let g:syntastic_go_checkers = ['golint', 'go vet']
+    let g:syntastic_go_checkers = ['gometalinter']
 
     let g:syntastic_asm_checkers = ['nasm']
 
