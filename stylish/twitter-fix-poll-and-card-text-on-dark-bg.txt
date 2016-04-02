@@ -1,0 +1,4 @@
+ @-moz-document url-prefix("https://twitter.com/"), url-prefix("https://api.twitter.com/") {
+.PollXChoiceTextOnly-choice--text, .PollXChoice-choice--text, .PollXChoiceTextOnly-progress, .PollXChoiceText-progress, .SummaryCard-content { color: grey;}
+
+}
