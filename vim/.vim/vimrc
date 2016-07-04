@@ -18,26 +18,24 @@ Plug 'https://github.com/chriskempson/base16-vim'
 " Plug 'https://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
 "Autocomplete
-if has("python")
-    Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
-        let g:ycm_min_num_of_chars_for_completion = 2
-        let g:ycm_min_num_identifier_candidate_chars = 2
-        let g:ycm_collect_identifiers_from_tags_files = 1
-        let g:ycm_goto_buffer_command = 'new-tab'
-        let g:ycm_autoclose_preview_window_after_completion = 1
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        nnoremap <leader>wg :YcmCompleter GoTo<CR>
-        nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
-        nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
-    Plug 'https://github.com/rdnetto/YCM-Generator', {'tag': 'stable'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.sh --clang-completer'}
+    let g:ycm_min_num_of_chars_for_completion = 2
+    let g:ycm_min_num_identifier_candidate_chars = 2
+    let g:ycm_collect_identifiers_from_tags_files = 1
+    let g:ycm_goto_buffer_command = 'new-tab'
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    nnoremap <leader>wg :YcmCompleter GoTo<CR>
+    nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
+Plug 'https://github.com/rdnetto/YCM-Generator', {'tag': 'stable'}
 
-    Plug 'honza/vim-snippets'
-    Plug 'SirVer/ultisnips'
-        let g:UltiSnipsExpandTrigger="<c-j>"
-        let g:UltiSnipsJumpForwardTrigger="<c-j>"
-        let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+    let g:UltiSnipsExpandTrigger="<c-j>"
+    let g:UltiSnipsJumpForwardTrigger="<c-j>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-endif
 Plug 'https://github.com/AndrewRadev/inline_edit.vim'
 Plug 'https://github.com/muziqiushan/vim-bufonly'
 
@@ -76,10 +74,11 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
 Plug 'https://github.com/chase/vim-ansible-yaml'
     let g:ansible_options = {'ignore_blank_lines': 1}
 
+Plug 'https://github.com/kylef/apiblueprint.vim'
 Plug 'https://github.com/othree/html5.vim'
 Plug 'https://github.com/suan/vim-instant-markdown'
-	let g:instant_markdown_autostart = 0
-	" use :InstantMarkdownPreview
+    let g:instant_markdown_autostart = 0
+    " use :InstantMarkdownPreview
 
 " Git integration
 Plug 'git.zip'
@@ -125,7 +124,12 @@ Plug 'https://github.com/godlygeek/tabular'
     nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
     vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
-Plug 'https://github.com/kien/ctrlp.vim'
+Plug 'https://github.com/mileszs/ack.vim'
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+
+Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     let g:ctrlp_cmd = 'CtrlPMRU'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
