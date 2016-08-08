@@ -36,7 +36,6 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpForwardTrigger="<c-j>"
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
-Plug 'https://github.com/AndrewRadev/inline_edit.vim'
 Plug 'https://github.com/muziqiushan/vim-bufonly'
 
 " Language specific
@@ -85,6 +84,8 @@ Plug 'git.zip'
 Plug 'fugitive.vim'
 
 " Utility
+Plug 'https://github.com/tpope/vim-sleuth'
+Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'repeat.vim'
 Plug 'surround.vim'
 Plug 'Tabmerge'
@@ -105,7 +106,6 @@ Plug 'https://github.com/bling/vim-airline'
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
 
-Plug 'https://github.com/danro/rename.vim'
 Plug 'https://github.com/godlygeek/tabular'
     nmap <Leader>a& :Tabularize /&<CR>
     vmap <Leader>a& :Tabularize /&<CR>
@@ -130,7 +130,7 @@ Plug 'https://github.com/mileszs/ack.vim'
     endif
 
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-    let g:ctrlp_cmd = 'CtrlPMRU'
+    let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
 
@@ -157,9 +157,8 @@ Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Plug 'https://github.com/tpope/vim-commentary'
 
 Plug 'https://github.com/scrooloose/nerdtree'
-    map <F2> :NERDTreeToggle<CR>
     let g:NERDTreeIgnore = ['\.pyc$']
-    let g:NERDTreeBookmarksFile = "$HOME/.vim/nerdtreebookmarks"
+    map <F2> :NERDTreeToggle<CR>
 
 Plug 'https://github.com/scrooloose/syntastic'
     map <F5> :SyntasticCheck<CR>
@@ -224,8 +223,6 @@ Plug 'https://github.com/xolox/vim-session'
     let g:session_persist_colors = 0
     set sessionoptions-=options
 
-" Colors
-Plug 'https://github.com/chriskempson/base16-vim'
 
 call plug#end()
 
@@ -293,7 +290,7 @@ if has("gui_running")
     set guioptions-=T
     set lines=999
     set columns=220
-    colorscheme base16-google
+    colorscheme base16-google-dark
 else
     set background=dark
     colorscheme delek
