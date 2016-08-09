@@ -351,9 +351,10 @@ nnoremap ; :
 inoremap jj <ESC>
 inoremap jJ <ESC>
 inoremap JJ <ESC>
-inoremap jk <ESC>:w<CR>
-inoremap jK <ESC>:w<CR>
-inoremap JK <ESC>:w<CR>
+inoremap jk <ESC>
+inoremap jK <ESC>
+inoremap JK <ESC>
+inoremap kkk<ESC>
 " Allow j and k to work over wrapped lines.
 nnoremap j gj
 nnoremap k gk

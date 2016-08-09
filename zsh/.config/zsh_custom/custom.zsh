@@ -28,12 +28,15 @@ alias vvp='venv/bin/python'
 alias vv='virtualenv venv'
 alias yt3='cd $HOME/downloads; youtube-dl --verbose --extract-audio --audio-format mp3 '
 alias yt='cd $HOME/downloads; youtube-dl --verbose'
+alias d='docker'
+alias dc='docker-compose'
 
-# I like the 'p' alias and 'j' is used by autojump so unset them both
+# 'j' is used by autojump so unset
 alias j='false'
+unalias j
+# Dont like p
 alias p='false'
 unalias p
-unalias j
 
 for source_file in $ZSH_CUSTOM/*.sh; do
     if [[ -r $source_file ]]; then
