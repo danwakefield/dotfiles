@@ -37,6 +37,7 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'https://github.com/muziqiushan/vim-bufonly'
+Plug 'https://github.com/easymotion/vim-easymotion'
 
 " Language specific
 Plug 'https://github.com/hdima/python-syntax', {'for': 'python'}
@@ -84,7 +85,7 @@ Plug 'git.zip'
 Plug 'fugitive.vim'
 
 " Utility
-Plug 'https://github.com/tpope/vim-sleuth'
+Plug 'https://github.com/ciaranm/detectindent'
 Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'repeat.vim'
 Plug 'surround.vim'
@@ -188,26 +189,24 @@ Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
 Plug 'https://github.com/tpope/vim-markdown'
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
-if has("python")
-    Plug 'https://github.com/majutsushi/tagbar'
-        map <F8> :TagbarToggle<CR>
-    Plug 'https://github.com/xolox/vim-easytags'
-        let g:easytags_async = 1
-        let g:easytags_auto_highlight = 0
-        let g:easytags_file = "~/.vim/tags/tags"
-        let g:easytags_by_filetype = "~/.vim/tags"
-        let g:tagbar_type_go = {
-                    \ 'ctagstype' : 'go',
-                    \ 'kinds' : [ 'p:package', 'i:imports:1', 'c:constants', 'v:variables',
-                    \ 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
-                    \ 'r:constructor', 'f:functions' ],
-                    \ 'sro' : '.',
-                    \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
-                    \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
-                    \ 'ctagsbin' : 'gotags',
-                    \ 'ctagsargs' : '-sort -silent'
-                    \ }
-endif
+Plug 'https://github.com/majutsushi/tagbar'
+    map <F8> :TagbarToggle<CR>
+Plug 'https://github.com/xolox/vim-easytags'
+    let g:easytags_async = 1
+    let g:easytags_auto_highlight = 0
+    let g:easytags_file = "~/.vim/tags/tags"
+    let g:easytags_by_filetype = "~/.vim/tags"
+    let g:tagbar_type_go = {
+                \ 'ctagstype' : 'go',
+                \ 'kinds' : [ 'p:package', 'i:imports:1', 'c:constants', 'v:variables',
+                \ 't:types', 'n:interfaces', 'w:fields', 'e:embedded', 'm:methods',
+                \ 'r:constructor', 'f:functions' ],
+                \ 'sro' : '.',
+                \ 'kind2scope' : { 't' : 'ctype', 'n' : 'ntype' },
+                \ 'scope2kind' : { 'ctype' : 't', 'ntype' : 'n' },
+                \ 'ctagsbin' : 'gotags',
+                \ 'ctagsargs' : '-sort -silent'
+                \ }
 
 Plug 'KabbAmine/zeavim.vim'
 Plug 'https://github.com/xolox/vim-misc'
@@ -236,50 +235,50 @@ set wildignore+=*.o,*.obj,.git,*.pyc,*.swp,*.bak,*~
 set wildignore+=eggs/**
 set wildignore+=*.egg-info/**
 set noerrorbells
-set novisualbell t_vb=              "No Beeping / flashing
-set gdefault                        " Default to replacing all occurances use of /g reverses
+set novisualbell t_vb=         " No Beeping / flashing
+set gdefault                   " Default to replacing all occurances in replace. use /find/replace/g for first in line
 set mouse=a
 set mousehide
 set cursorline
-set ruler                           "Always show cursor
-set virtualedit=all                 "Fix to visual mode
-set scrolloff=3                     "keep cursorline 3 lines from top/bottom
-set backspace=indent,eol,start      "backspace over autoindent / EOL
-set showmatch                       "Show matching parens
+set ruler                      " Always show cursor
+set virtualedit=all            " Fix to visual mode
+set scrolloff=3                " keep cursorline 3 lines from top/bottom
+set backspace=indent,eol,start " backspace over autoindent / EOL
+set showmatch                  " Show matching parens
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab               "Use spaces not tabs
-set shiftround              "Rounds indent to multiple of shiftwidth
-set formatoptions=croql     "Auto format text
+set expandtab                  " Use spaces not tabs
+set shiftround                 " Rounds indent to multiple of shiftwidth
+set formatoptions=croql        " Auto format text
 set textwidth=78
-set magic                   "use more egrep like regex
-set ignorecase              "ignore case in search
-set smartcase               "Unless search contains uppercase
-set lazyredraw              "Dont redraw when running macros
-set hlsearch                "Highlight search matches
-set incsearch               "Search while composing regex
-set nowrap                  "Dont wrap lines
-set nobackup                "Dont write junk files
+set magic                      " use more egrep like regex
+set ignorecase                 " ignore case in search
+set smartcase                  " Unless search contains uppercase
+set lazyredraw                 " Dont redraw when running macros
+set hlsearch                   " Highlight search matches
+set incsearch                  " Search while composing regex
+set nowrap                     " Dont wrap lines
+set nobackup                   " Dont write junk files
 set nowb
 set noswapfile
 set autowrite
 set autowriteall
 set autoread
-set autochdir               "Change to files dir
+set autochdir                  " Change to files dir
 set modeline
 set modelines=2
-set showcmd                 "autocomplete auto commands
-set report=0                "commands show changed line count
-set laststatus=2            "always show status
+set showcmd                    " autocomplete auto commands
+set report=0                   " commands show changed line count
+set laststatus=2               " always show status
 set showtabline=2
-set foldenable              "Turn on folding
-set foldmethod=indent       "But dont autofold on open
+set foldenable                 " Turn on folding
+set foldmethod=indent          " But dont autofold on open
 set foldlevel=100
-set splitright              "Hoz and vert splits appear
-set splitbelow              "below and to the right
-set shortmess+=filmnrxoOtT  "Abbrev. of messages (avoids 'hit enter')
+set splitright                 " Hoz and vert splits appear
+set splitbelow                 " below and to the right
+set shortmess+=filmnrxoOtT     " Abbrev. of messages (avoids 'hit enter')
 set viminfo="$HOME/.vim/viminfo"
 set list
 set listchars=tab:·\ ,trail:˽
@@ -354,7 +353,7 @@ inoremap JJ <ESC>
 inoremap jk <ESC>
 inoremap jK <ESC>
 inoremap JK <ESC>
-inoremap kkk<ESC>
+inoremap kkk <ESC>
 " Allow j and k to work over wrapped lines.
 nnoremap j gj
 nnoremap k gk
@@ -382,7 +381,7 @@ nnoremap <leader><space> :noh<cr>
 " Useful mappings for managing tabs
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
-nnoremap <leader>tm :TabMerge right<CR>
+nnoremap <leader>tm :Tabmerge right<CR>
 nmap <leader>c :clo<CR>
 " paste from system clipboard
 nnoremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>

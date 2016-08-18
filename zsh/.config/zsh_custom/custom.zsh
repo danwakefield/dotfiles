@@ -30,6 +30,7 @@ alias yt3='cd $HOME/downloads; youtube-dl --verbose --extract-audio --audio-form
 alias yt='cd $HOME/downloads; youtube-dl --verbose'
 alias d='docker'
 alias dc='docker-compose'
+alias dclean='docker rm -f $(docker ps -a -q);docker rmi $(docker images -q)'
 
 # 'j' is used by autojump so unset
 alias j='false'
