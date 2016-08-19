@@ -45,7 +45,6 @@ Plug 'https://github.com/hdima/python-syntax', {'for': 'python'}
     let python_highlight_space_errors = 0
 Plug 'https://github.com/hynek/vim-python-pep8-indent', {'for': 'python'}
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
-Plug 'https://github.com/helino/vim-nasm', {'for': 'nasm'}
 
 Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_bin_path = expand("~/code/go/bin")
@@ -79,6 +78,7 @@ Plug 'https://github.com/othree/html5.vim'
 Plug 'https://github.com/suan/vim-instant-markdown'
     let g:instant_markdown_autostart = 0
     " use :InstantMarkdownPreview
+Plug 'https://github.com/posva/vim-vue'
 
 " Git integration
 Plug 'git.zip'
@@ -175,10 +175,7 @@ Plug 'https://github.com/scrooloose/syntastic'
 
     let g:syntastic_go_checkers = ['gometalinter']
 
-    let g:syntastic_asm_checkers = ['nasm']
-
-    let g:syntastic_javascript_checkers = ['eslint']
-    let g:syntastic_javascript_eslint_exec = 'eslint_d'
+    let g:syntastic_javascript_checkers = ['standard']
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
@@ -224,7 +221,6 @@ Plug 'https://github.com/xolox/vim-session'
 
 
 call plug#end()
-
 
 set number
 set relativenumber
