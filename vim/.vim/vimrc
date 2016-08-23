@@ -37,7 +37,6 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'https://github.com/muziqiushan/vim-bufonly'
-Plug 'https://github.com/easymotion/vim-easymotion'
 
 " Language specific
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
@@ -79,6 +78,13 @@ Plug 'fugitive.vim'
 " Utility
 Plug 'https://github.com/ciaranm/detectindent'
 Plug 'https://github.com/tpope/vim-eunuch'
+Plug 'https://github.com/easymotion/vim-easymotion'
+    map <Leader>j <Plug>(easymotion-j)
+    map <Leader>k <Plug>(easymotion-k)
+    map <Leader>w <Plug>(easymotion-w)
+    map <Leader>s <Plug>(easymotion-overwin-f2)
+    nmap s <Plug>(easymotion-overwin-f)
+    let g:EasyMotion_smartcase = 1
 Plug 'repeat.vim'
 Plug 'surround.vim'
 Plug 'Tabmerge'
