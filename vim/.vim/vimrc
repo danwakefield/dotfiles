@@ -154,6 +154,7 @@ Plug 'https://github.com/luochen1990/rainbow'
 Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/milkypostman/vim-togglelist'
 Plug 'https://github.com/jlanzarotta/bufexplorer'
+    let g:bufExplorerFindActive=0        " Do not go to active window.
 Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Plug 'https://github.com/tpope/vim-commentary'
 
