@@ -37,11 +37,13 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'https://github.com/muziqiushan/vim-bufonly'
+Plug 'https://github.com/mtth/scratch.vim'
 
 " Language specific
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/kylef/apiblueprint.vim'
 Plug 'https://github.com/posva/vim-vue'
+Plug 'https://github.com/wookiehangover/jshint.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
     let g:polyglot_disabled = ['go']
 Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
@@ -379,7 +381,7 @@ nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :Tabmerge right<CR>
 nmap <leader>c :clo<CR>
 " paste from system clipboard
-nnoremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
+nnoremap <leader>p :set paste<CR>"+p:set nopaste<CR>
 " yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
