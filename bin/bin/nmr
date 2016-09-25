@@ -218,7 +218,7 @@ OPTS = {
 # losses of data
 "SAFERENAME" : False,
 # Does not rename the files copys with the modified name instead
-"OUTPUTDIR" : "/home/admx/video/tv/keep",
+"OUTPUTDIR" : "/home/dan/video/tv",
 # The directory to write the files to
 "STRICT" : False,
 # Disallows renaming if any field cannot be determined
