@@ -80,6 +80,11 @@ Plug 'fugitive.vim'
 " Utility
 Plug 'https://github.com/ciaranm/detectindent'
 Plug 'https://github.com/tpope/vim-eunuch'
+Plug 'https://github.com/tpope/vim-abolish'
+    " crs = snake_case
+    " crm = MixedCase
+    " crc = camelCase
+    " cru = UPPER_CASE
 Plug 'https://github.com/easymotion/vim-easymotion'
     map <Leader>j <Plug>(easymotion-j)
     map <Leader>k <Plug>(easymotion-k)
@@ -176,8 +181,6 @@ Plug 'https://github.com/scrooloose/syntastic'
 
     let g:syntastic_go_checkers = ['gometalinter']
     let g:syntastic_go_gometalinter_args = '--enable misspell'
-
-    let g:syntastic_javascript_checkers = ['standard']
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
