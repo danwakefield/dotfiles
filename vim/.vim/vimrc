@@ -43,7 +43,7 @@ Plug 'https://github.com/mtth/scratch.vim'
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/kylef/apiblueprint.vim'
 Plug 'https://github.com/posva/vim-vue'
-Plug 'https://github.com/wookiehangover/jshint.vim'
+" Plug 'https://github.com/wookiehangover/jshint.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
     let g:polyglot_disabled = ['go']
 Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
@@ -136,7 +136,7 @@ Plug 'https://github.com/mileszs/ack.vim'
     endif
 
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-    let g:ctrlp_cmd = 'CtrlP'
+    let g:ctrlp_cmd = 'CtrlPMRU'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
 
@@ -181,6 +181,9 @@ Plug 'https://github.com/scrooloose/syntastic'
 
     let g:syntastic_go_checkers = ['gometalinter']
     let g:syntastic_go_gometalinter_args = '--enable misspell'
+
+    let g:syntastic_javascript_checkers = ['eslint']
+    let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
