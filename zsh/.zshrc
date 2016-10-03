@@ -11,7 +11,7 @@ export TERM='xterm-256color'
 
 ZSH_THEME="xiong-chiamiov-plus"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(rsync git git-extras debian extract common-aliases virtualenv)
+plugins=(rsync git git-extras debian extract common-aliases virtualenv docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
