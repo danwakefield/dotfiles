@@ -59,17 +59,17 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_textobj_enabled = 0
     augroup vim_go
         autocmd!
-        autocmd FileType go nmap <leader>gr <Plug>(go-run)
-        autocmd FileType go nmap <leader>gb <Plug>(go-build)
-        autocmd FileType go nmap <leader>gt <Plug>(go-test)
-        autocmd FileType go nmap <leader>gc <Plug>(go-coverage)
-        autocmd FileType go nmap <Leader>gds <Plug>(go-def-split)
+        autocmd FileType go nmap <Leader>gr <Plug>(go-run)
+        autocmd FileType go nmap <Leader>gb <Plug>(go-build)
+        autocmd FileType go nmap <Leader>ge <Plug>(go-whicherrs)
+        autocmd FileType go nmap <Leader>gt <Plug>(go-test)
+        autocmd FileType go nmap <Leader>gc <Plug>(go-coverage)
+        autocmd FileType go nmap <Leader>gf <Plug>(go-referrers)
+        autocmd FileType go nmap <Leader>gi <Plug>(go-implements)
+        autocmd FileType go nmap <Leader>gr <Plug>(go-rename)
+        autocmd FileType go nmap <Leader>gd <Plug>(go-def)
         autocmd FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
         autocmd FileType go nmap <Leader>gdt <Plug>(go-def-tab)
-        autocmd FileType go nmap <Leader>gdb <Plug>(go-doc-browser)
-        autocmd FileType go nmap <Leader>gdd <Plug>(go-doc-vertical)
-        autocmd FileType go nmap <Leader>gi <Plug>(go-implements)
-        autocmd FileType go nmap <Leader>gre <Plug>(go-rename)
         autocmd BufEnter *.go setlocal fdm=indent
     augroup END
 
@@ -243,6 +243,7 @@ set novisualbell t_vb=         " No Beeping / flashing
 set gdefault                   " Default to replacing all occurances in replace. use /find/replace/g for first in line
 set mouse=a
 set mousehide
+set mousemodel=popup
 set cursorline
 set ruler                      " Always show cursor
 set virtualedit=all            " Fix to visual mode
@@ -295,7 +296,7 @@ if has("gui_running")
     set columns=220
     colorscheme base16-google-dark
 else
-    set noruler " Hide underline in shell. Obscures punctiation esp underscores
+    set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
     set background=dark
     colorscheme delek
 endif
