@@ -9,7 +9,10 @@ export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/go
 export TERM='xterm-256color'
 
-ZSH_THEME="xiong-chiamiov-plus"
+# ZSH_THEME="xiong-chiamiov-plus"
+ZSH_THEME="bullettrain"
+export BULLETTRAIN_DIR_EXTENDED=2
+
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(rsync git git-extras debian extract common-aliases virtualenv docker-compose)
 

@@ -295,6 +295,7 @@ if has("gui_running")
     set columns=220
     colorscheme base16-google-dark
 else
+    set noruler " Hide underline in shell. Obscures punctiation esp underscores
     set background=dark
     colorscheme delek
 endif
