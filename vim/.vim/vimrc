@@ -59,7 +59,7 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_textobj_enabled = 0
     augroup vim_go
         autocmd!
-        autocmd FileType go nmap <Leader>gr <Plug>(go-run)
+        autocmd FileType go nmap <Leader>gx <Plug>(go-run)
         autocmd FileType go nmap <Leader>gb <Plug>(go-build)
         autocmd FileType go nmap <Leader>ge <Plug>(go-whicherrs)
         autocmd FileType go nmap <Leader>gt <Plug>(go-test)
