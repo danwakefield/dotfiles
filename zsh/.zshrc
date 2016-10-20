@@ -12,6 +12,9 @@ export TERM='xterm-256color'
 # ZSH_THEME="xiong-chiamiov-plus"
 ZSH_THEME="bullettrain"
 export BULLETTRAIN_DIR_EXTENDED=2
+if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
+    export BULLETTRAIN_IS_SSH_CLIENT=true
+fi
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(rsync git git-extras debian extract common-aliases virtualenv docker-compose)
