@@ -8,6 +8,8 @@ export EDITOR='vim'
 export GOPATH=$HOME/code/go
 export GOROOT=/usr/local/go
 export TERM='xterm-256color'
+export NVM_LAZY_LOAD=true
+export NVM_DIR=$XDG_CONFIG_HOME/nvm
 
 # ZSH_THEME="xiong-chiamiov-plus"
 ZSH_THEME="bullettrain"
@@ -17,7 +19,17 @@ if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
 fi
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(rsync git git-extras debian extract common-aliases virtualenv docker-compose)
+plugins=(
+    rsync
+    zsh-nvm
+    git
+    git-extras
+    debian
+    extract
+    common-aliases
+    virtualenv
+    docker-compose
+)
 
 source $ZSH/oh-my-zsh.sh
 
