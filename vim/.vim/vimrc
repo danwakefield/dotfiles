@@ -46,7 +46,7 @@ Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/wookiehangover/jshint.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
     let g:polyglot_disabled = ['go']
-Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
+" Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 
 " GO
 Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
