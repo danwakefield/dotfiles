@@ -49,7 +49,7 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 
 " GO
-Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
+Plug 'https://github.com/fatih/vim-go', {'for': 'go', 'branch': 'vim-8.0'}
     let g:go_bin_path = expand("~/code/go/bin")
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command = 'goimports'
