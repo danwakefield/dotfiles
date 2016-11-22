@@ -69,7 +69,7 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go', 'branch': 'vim-8.0'}
         autocmd FileType go nmap <Leader>gr <Plug>(go-rename)
         autocmd FileType go nmap <Leader>gdd <Plug>(go-def)
         autocmd FileType go nmap <Leader>gdv <Plug>(go-def-vertical)
-        autocmd FileType go nmap <Leader>gdt <Plug>(go-def-tab)
+        autocmd FileType go nmap <Leader>gdb <Plug>(go-def-tab)
         autocmd BufEnter *.go setlocal fdm=indent
     augroup END
 
@@ -180,7 +180,7 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
 
     let g:syntastic_go_checkers = ['gometalinter']
-    let g:syntastic_go_gometalinter_args = '--enable misspell'
+    let g:syntastic_go_gometalinter_args = '--enable misspell --exclude="(c\.AbortWith|rc\.[G|P|D]|restClient.[G|P|D]|\(defer).*errcheck"'
 
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint_d'
