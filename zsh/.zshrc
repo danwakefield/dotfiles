@@ -24,6 +24,7 @@ plugins=(
     zsh-nvm
     git
     git-extras
+    git-flow
     debian
     extract
     common-aliases
