@@ -95,6 +95,7 @@ Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'repeat.vim'
 Plug 'surround.vim'
 Plug 'Tabmerge'
+    nnoremap <leader>tm :Tabmerge right<CR>
 Plug 'https://github.com/bling/vim-airline'
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
@@ -191,6 +192,7 @@ Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
 
 Plug 'https://github.com/terryma/vim-expand-region'
 Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
+    nnoremap <leader>ie :InlineEdit<CR>
 Plug 'https://github.com/tpope/vim-markdown'
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
@@ -387,7 +389,6 @@ nnoremap <leader><space> :noh<cr>
 " Useful mappings for managing tabs
 nnoremap <leader>tn :tabnew<cr>
 nnoremap <leader>tc :tabclose<cr>
-nnoremap <leader>tm :Tabmerge right<CR>
 nmap <leader>c :clo<CR>
 " paste from system clipboard
 nnoremap <leader>p :set paste<CR>"+p:set nopaste<CR>
@@ -405,4 +406,3 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>es :sp %%
 nnoremap <leader>ev :vsp %%
 nnoremap <leader>et :tabe %%
-nnoremap <leader>ie :InlineEdit<CR>
