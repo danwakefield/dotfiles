@@ -181,7 +181,7 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
 
     let g:syntastic_go_checkers = ['gometalinter']
-    let g:syntastic_go_gometalinter_args = '--enable misspell --exclude="(c\.AbortWith|rc\.[G|P|D]|restClient.[G|P|D]|\(defer).*errcheck"'
+    let g:syntastic_go_gometalinter_args = '--enable misspell --exclude="((c\.AbortWith|rc\.[G|P|D]|restClient\.[G|P|D]|\(defer).*errcheck)|(\"err\".*\(vetshadow\))"'
 
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint_d'
@@ -406,3 +406,6 @@ cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 nnoremap <leader>es :sp %%
 nnoremap <leader>ev :vsp %%
 nnoremap <leader>et :tabe %%
+" Make all symbols magic. No need to escape parans, *, ? etc
+nnoremap / /\v
+vnoremap / /\v
