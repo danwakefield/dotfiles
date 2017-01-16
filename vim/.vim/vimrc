@@ -18,11 +18,12 @@ Plug 'https://github.com/chriskempson/base16-vim'
 " Plug 'https://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
 "Autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --clang-completer --gocode-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --gocode-completer'}
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_min_num_identifier_candidate_chars = 2
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_goto_buffer_command = 'new-tab'
+    let g:ycm_add_preview_to_completeopt = 1
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     nnoremap <leader>wg :YcmCompleter GoTo<CR>
@@ -42,6 +43,7 @@ Plug 'https://github.com/mtth/scratch.vim'
 " Language specific
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/kylef/apiblueprint.vim'
+Plug 'https://github.com/tmhedberg/SimpylFold'
 " Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/wookiehangover/jshint.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
@@ -259,6 +261,7 @@ set softtabstop=4
 set expandtab                  " Use spaces not tabs
 set shiftround                 " Rounds indent to multiple of shiftwidth
 set formatoptions=croql        " Auto format text
+set completeopt+=preview
 set textwidth=78
 set magic                      " use more egrep like regex
 set ignorecase                 " ignore case in search
@@ -395,7 +398,7 @@ nnoremap <leader>p :set paste<CR>"+p:set nopaste<CR>
 " yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
-nnoremap <leader>v :e! $MYVIMRC<CR>
+nnoremap <leader>v :tabnew<CR>:e! $MYVIMRC<CR>
 nnoremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " H and L move right and left through tabs.
 nnoremap <S-H> gT
