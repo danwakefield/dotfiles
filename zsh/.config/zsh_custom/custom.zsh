@@ -20,7 +20,7 @@ alias les='less '
 alias mget='wget  --header="Accept: */*" --user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0"'
 alias rm='rm -I'
 alias rsync-sync="rsync -avzu --delete --progress -h"
-alias sgrep='\ag --context=5 --noheading --color-path 35 --color-line-number 32 --follow --path-to-agignore ~/.config/agignore '
+alias sgrep='\ag --context=5 --noheading --color-path 35 --color-line-number 32 --follow --path-to-ignore ~/.config/agignore '
 alias -s pdf=evince
 alias sv='sudo -E vim '
 alias vg='vagrant'

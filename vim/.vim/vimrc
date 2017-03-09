@@ -41,6 +41,7 @@ Plug 'https://github.com/muziqiushan/vim-bufonly'
 Plug 'https://github.com/mtth/scratch.vim'
 
 " Language specific
+Plug 'https://github.com/tpope/vim-endwise'
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/kylef/apiblueprint.vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
@@ -49,9 +50,20 @@ Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/sheerun/vim-polyglot'
     let g:polyglot_disabled = ['go']
 " Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
+Plug 'https://github.com/tpope/vim-rails'
+Plug 'https://github.com/christoomey/vim-rfactory'
+Plug 'thoughtbot/vim-rspec'
+  map <Leader>st :call RunCurrentSpecFile()<CR>
+  map <Leader>ss :call RunNearestSpec()<CR>
+  map <Leader>sl :call RunLastSpec()<CR>
+  map <Leader>sa :call RunAllSpecs()<CR>
+  if has("mac")
+    let g:rspec_runner = "os_x_iterm2"
+  endif
+  let g:rspec_command = "rspec -fd {spec}"
 
 " GO
-Plug 'https://github.com/fatih/vim-go', {'for': 'go', 'branch': 'vim-8.0'}
+Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     let g:go_bin_path = expand("~/code/go/bin")
     let g:go_fmt_fail_silently = 1
     let g:go_fmt_command = 'goimports'
@@ -78,8 +90,16 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go', 'branch': 'vim-8.0'}
 " Git integration
 Plug 'git.zip'
 Plug 'fugitive.vim'
+Plug 'mhinz/vim-signify'
+    let g:signify_vcs_list = [ 'git' ]
 
 " Utility
+Plug 'junegunn/fzf', { 'dir': '~/src/fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+    if has('mac')
+        let g:fzf_launcher = $HOME . "/bin/fzf-macvim-iterm-wrapper %s"
+    endif
+Plug 'https://github.com/airblade/vim-rooter'
 Plug 'https://github.com/ciaranm/detectindent'
 Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'https://github.com/tpope/vim-abolish'
@@ -139,9 +159,10 @@ Plug 'https://github.com/mileszs/ack.vim'
     endif
 
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-    let g:ctrlp_cmd = 'CtrlPMRU'
+    let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 Plug 'https://github.com/luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -183,16 +204,21 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_sh_shellcheck_args = '--shell=bash'
 
     let g:syntastic_go_checkers = ['gometalinter']
-    let g:syntastic_go_gometalinter_args = '--enable misspell --exclude="((c\.AbortWith|rc\.[G|P|D]|restClient\.[G|P|D]|\(defer).*errcheck)|(\"err\".*\(vetshadow\))"'
+    let g:syntastic_go_gometalinter_args = '--enable misspell'
 
     let g:syntastic_javascript_checkers = ['eslint']
     let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+    let g:syntastic_ruby_checkers = ['ruboocop']
+    let g:syntastic_ruby_rubocop_exec = '/usr/local/bin/diffocop'
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
     map <F3> :GundoToggle<CR>
 
 Plug 'https://github.com/terryma/vim-expand-region'
+Plug 'https://github.com/kana/vim-textobj-user'
+Plug 'https://github.com/kana/vim-textobj-line'
 Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
     nnoremap <leader>ie :InlineEdit<CR>
 Plug 'https://github.com/tpope/vim-markdown'
@@ -276,7 +302,7 @@ set noswapfile
 set autowrite
 set autowriteall
 set autoread
-set autochdir                  " Change to files dir
+" set autochdir                  " Change to files dir
 set modeline
 set modelines=2
 set showcmd                    " autocomplete auto commands
@@ -292,10 +318,15 @@ set shortmess+=filmnrxoOtT     " Abbrev. of messages (avoids 'hit enter')
 set viminfo="$HOME/.vim/viminfo"
 set list
 set listchars=tab:·\ ,trail:˽
+set grepprg=ag\ --nogroup\ --nocolor
 
 if has("gui_running")
     set background=dark
-    set guifont=Office\ Code\ Pro\ Medium\ 10
+    if has("mac")
+        set guifont=Office\ Code\ Pro\ Medium:h13
+    else
+        set guifont=Office\ Code\ Pro\ Medium\ 10
+    endif
     set guioptions-=T
     set lines=999
     set columns=220
@@ -320,6 +351,7 @@ function! WriteCreatingDirs()
     write
 endfunction
 command! W call WriteCreatingDirs()
+command! -nargs=+ -complete=file -bar Agg silent! grep! <args>|cwindow|redraw!
 
 if exists("+undofile")
     " undofile - This allows you to use undos after exiting and restarting
@@ -347,6 +379,7 @@ augroup asm
     autocmd FileType asm setlocal ft=nasm
 augroup END
 
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " Force sudo write
 cnoremap w!! w !sudo tee % >/dev/null
 " Swap the jump to mark operators
