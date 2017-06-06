@@ -38,7 +38,6 @@ Plug 'SirVer/ultisnips'
     let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 Plug 'https://github.com/muziqiushan/vim-bufonly'
-Plug 'https://github.com/mtth/scratch.vim'
 
 " Language specific
 Plug 'https://github.com/tpope/vim-endwise'
@@ -52,11 +51,12 @@ Plug 'https://github.com/sheerun/vim-polyglot'
 " Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'https://github.com/tpope/vim-rails'
 Plug 'https://github.com/christoomey/vim-rfactory'
+Plug 'https://github.com/jgdavey/vim-blockle'
 Plug 'thoughtbot/vim-rspec'
-  map <Leader>st :call RunCurrentSpecFile()<CR>
-  map <Leader>ss :call RunNearestSpec()<CR>
-  map <Leader>sl :call RunLastSpec()<CR>
-  map <Leader>sa :call RunAllSpecs()<CR>
+  map <Leader>tt :call RunCurrentSpecFile()<CR>
+  map <Leader>ts :call RunNearestSpec()<CR>
+  map <Leader>tl :call RunLastSpec()<CR>
+  map <Leader>ta :call RunAllSpecs()<CR>
   if has("mac")
     let g:rspec_runner = "os_x_iterm2"
   endif
@@ -90,8 +90,7 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
 " Git integration
 Plug 'git.zip'
 Plug 'fugitive.vim'
-Plug 'mhinz/vim-signify'
-    let g:signify_vcs_list = [ 'git' ]
+Plug 'airblade/vim-gitgutter'
 
 " Utility
 Plug 'junegunn/fzf', { 'dir': '~/src/fzf', 'do': './install --all' }
@@ -100,7 +99,9 @@ Plug 'junegunn/fzf.vim'
         let g:fzf_launcher = $HOME . "/bin/fzf-macvim-iterm-wrapper %s"
     endif
 Plug 'https://github.com/airblade/vim-rooter'
+    let g:rooter_change_directory_for_non_project_files = 'current'
 Plug 'https://github.com/ciaranm/detectindent'
+Plug 'https://github.com/tmhedberg/matchit'
 Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'https://github.com/tpope/vim-abolish'
     " crs = snake_case
@@ -163,6 +164,7 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     let g:ctrlp_working_path_mode = 'ra'
     let g:ctrlp_switch_buffer = '0'
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 
 Plug 'https://github.com/luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -183,8 +185,12 @@ Plug 'https://github.com/luochen1990/rainbow'
 Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/milkypostman/vim-togglelist'
 Plug 'https://github.com/jlanzarotta/bufexplorer'
-    let g:bufExplorerFindActive=0        " Do not go to active window.
-Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
+    let g:bufExplorerFindActive = 0        " Do not go to active window.
+
+Plug 'https://github.com/Yggdroot/indentLine'
+    let g:indentLine_char = '┆'
+    let g:indentLine_enabled = 0
+
 Plug 'https://github.com/tpope/vim-commentary'
 
 Plug 'https://github.com/scrooloose/nerdtree'
@@ -201,7 +207,7 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
     let g:syntastic_sh_checkers = ['shellcheck']
-    let g:syntastic_sh_shellcheck_args = '--shell=bash'
+    let g:syntastic_sh_shellcheck_args = '-x --shell=bash'
 
     let g:syntastic_go_checkers = ['gometalinter']
     let g:syntastic_go_gometalinter_args = '--enable misspell'
@@ -212,6 +218,8 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_ruby_checkers = ['ruboocop']
     let g:syntastic_ruby_rubocop_exec = '/usr/local/bin/diffocop'
 
+    let g:syntastic_markdown_checkers = ['proselint']
+
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
     map <F3> :GundoToggle<CR>
@@ -221,7 +229,6 @@ Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/kana/vim-textobj-line'
 Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
     nnoremap <leader>ie :InlineEdit<CR>
-Plug 'https://github.com/tpope/vim-markdown'
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/majutsushi/tagbar'
@@ -335,6 +342,8 @@ else
     set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
     set background=dark
     colorscheme delek
+    highlight SpellBad ctermbg=000 ctermfg=9
+    au Filetype gitcommit highlight SyntaxError ctermbg=000 ctermfg=9
 endif
 
 let mapleader = '\'
@@ -370,7 +379,7 @@ endif
 let g:markdown_fenced_languages = ['asm', 'sh', 'bash=sh', 'c', 'python', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 augroup txt_files
     autocmd!
-    autocmd FileType text,markdown,gitcommit setl nocindent spell textwidth=0 wrapmargin=0 wrap
+    autocmd FileType text,markdown,gitcommit setl nocindent spell wrapmargin=0 wrap
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
@@ -419,7 +428,7 @@ nnoremap <left> <C-w><
 nnoremap <right> <C-w>>
 nnoremap <down> <C-w>-
 nnoremap <up> <C-w>+
-nnoremap <F4> :set spell!<CR>
+nnoremap <F6> :set spell!<CR>
 " Unhighlight matches
 nnoremap <leader><space> :noh<cr>
 " Useful mappings for managing tabs
@@ -436,9 +445,16 @@ nnoremap <silent> <leader>V :source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 
 " H and L move right and left through tabs.
 nnoremap <S-H> gT
 nnoremap <S-L> gt
-" Open dir of current file in a file window
-" Also %% will expand to current dir on command line.
+
+" Automatic Filename expansions for commands
+" Directory for current file
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+" Current file name
+cnoremap %f <C-R>=fnameescape(expand('%:t'))<cr>
+" Full path for current file
+cnoremap %a <C-R>=fnameescape(expand('%:p'))<cr>
+cnoremap %p <C-R>=fnameescape(expand('%:p'))<cr>
+
 nnoremap <leader>es :sp %%
 nnoremap <leader>ev :vsp %%
 nnoremap <leader>et :tabe %%

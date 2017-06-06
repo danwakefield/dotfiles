@@ -23,9 +23,9 @@ plugins=(
     rsync
     zsh-nvm
     git
+    bundler
     git-extras
     git-flow
-    debian
     extract
     common-aliases
     virtualenv
@@ -35,12 +35,12 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-PATH="/sbin"
+PATH="/usr/local/bin"
+PATH="$PATH:/sbin"
 PATH="$PATH:/bin"
 PATH="$PATH:/usr/sbin"
 PATH="$PATH:/usr/bin"
 PATH="$PATH:/usr/local/sbin"
-PATH="$PATH:/usr/local/bin"
 PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 PATH="$PATH:$HOME/bin"
@@ -51,18 +51,20 @@ PATH="$PATH:/usr/local/heroku/bin"
 PATH="$PATH:$HOME/code/pebble/sdk/bin"
 export PATH
 
-[[ -r /usr/share/autojump/autojump.sh ]] \
-    && source /usr/share/autojump/autojump.sh \
+[[ -r /usr/local/etc/profile.d/autojump.sh ]] \
+    && source /usr/local/etc/profile.d/autojump.sh \
     || echo "Install Autojump: ai autojump"
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 setopt HIST_IGNORE_SPACE
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /home/danielwakefield/src/google-cloud-sdk/path.zsh.inc ]; then
-  source '/home/danielwakefield/src/google-cloud-sdk/path.zsh.inc'
+if [ -f $HOME/src/google-cloud-sdk/path.zsh.inc ]; then
+  source '$HOME/src/google-cloud-sdk/path.zsh.inc'
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /home/danielwakefield/src/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/home/danielwakefield/src/google-cloud-sdk/completion.zsh.inc'
+if [ -f $HOME/src/google-cloud-sdk/completion.zsh.inc ]; then
+  source '$HOME/src/google-cloud-sdk/completion.zsh.inc'
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
