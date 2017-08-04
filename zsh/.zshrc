@@ -19,13 +19,28 @@ if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
 fi
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-plugins=(
+declare -a plugins
+declare -A system=( linux 1 mac 1 windows 1 bsd 1 )
+
+case "$OSTYPE" in
+    darwin*)  system[mac]=0 ;;
+    linux*)   system[linux]=0 ;;
+    bsd*)     system[bsd]=0 ;;
+    msys*)    system[windows]=0 ;;
+    *)        echo "unknown: $OSTYPE" ;;
+esac
+
+if [[ ${system[mac]} == 0 ]]; then
+    plugins+=bundler
+elif [[ ${system[linux]} == 0 ]]; then
+    plugins+=debian
+fi
+
+plugins+=(
     rsync
     zsh-nvm
     git
-    bundler
     git-extras
-    git-flow
     extract
     common-aliases
     virtualenv
@@ -49,10 +64,19 @@ PATH="$PATH:/usr/games"
 PATH="$PATH:/usr/local/games"
 PATH="$PATH:/usr/local/heroku/bin"
 PATH="$PATH:$HOME/code/pebble/sdk/bin"
+PATH="$PATH:/Users/danielwakefield/code/py/anaconda3/bin"
 export PATH
 
-[[ -r /usr/local/etc/profile.d/autojump.sh ]] \
-    && source /usr/local/etc/profile.d/autojump.sh \
+if [[ ${system[mac]} == 0 ]]; then
+    autojump_path=/usr/local/etc/profile.d/autojump.sh
+elif [[ ${system[linux]} == 0 ]]; then
+    autojump_path=/usr/share/autojump/autojump.sh
+else
+    autojump_path=/doe/s/not/exists
+fi
+
+[[ -r $autojump_path ]] \
+    && source $autojump_path \
     || echo "Install Autojump: ai autojump"
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 setopt HIST_IGNORE_SPACE
