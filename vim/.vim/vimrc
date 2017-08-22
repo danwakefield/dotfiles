@@ -89,8 +89,10 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
 
 " Git integration
 Plug 'git.zip'
-Plug 'fugitive.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'https://github.com/neoclide/vim-easygit'
+    let g:easygit_enable_command = 1
+Plug 'https://github.com/rhysd/committia.vim'
 
 " Utility
 Plug 'junegunn/fzf', { 'dir': '~/src/fzf', 'do': './install --all' }
