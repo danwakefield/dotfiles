@@ -42,7 +42,6 @@ Plug 'https://github.com/muziqiushan/vim-bufonly'
 " Language specific
 Plug 'https://github.com/tpope/vim-endwise'
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
-Plug 'https://github.com/kylef/apiblueprint.vim'
 Plug 'https://github.com/tmhedberg/SimpylFold'
 " Plug 'https://github.com/posva/vim-vue'
 " Plug 'https://github.com/wookiehangover/jshint.vim'
@@ -142,6 +141,7 @@ Plug 'https://github.com/bling/vim-airline'
     nmap <leader>8 <Plug>AirlineSelectTab8
     nmap <leader>9 <Plug>AirlineSelectTab9
 
+" TODO: Replace with https://github.com/tommcdo/vim-lion
 Plug 'https://github.com/godlygeek/tabular'
     nmap <Leader>a& :Tabularize /&<CR>
     vmap <Leader>a& :Tabularize /&<CR>
@@ -165,6 +165,7 @@ Plug 'https://github.com/mileszs/ack.vim'
         let g:ackprg = 'ag --vimgrep'
     endif
 
+" TODO: Replace with https://github.com/Yggdroot/LeaderF
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
     let g:ctrlp_cmd = 'CtrlP'
     let g:ctrlp_working_path_mode = 'ra'
@@ -194,6 +195,7 @@ Plug 'https://github.com/jlanzarotta/bufexplorer'
     let g:bufExplorerFindActive = 0        " Do not go to active window.
 
 Plug 'https://github.com/Yggdroot/indentLine'
+    " :IndentLineToggle
     let g:indentLine_char = '┆'
     let g:indentLine_enabled = 0
 
@@ -224,7 +226,7 @@ Plug 'https://github.com/scrooloose/syntastic'
     let g:syntastic_ruby_checkers = ['ruboocop']
     let g:syntastic_ruby_rubocop_exec = '/usr/local/bin/diffocop'
 
-    let g:syntastic_markdown_checkers = ['proselint']
+    let g:syntastic_markdown_checkers = []
 
 Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
     let g:gundo_prefer_python3 = 1
