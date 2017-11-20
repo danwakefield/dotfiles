@@ -272,6 +272,11 @@ Plug 'https://github.com/xolox/vim-session'
     let g:session_persist_colors = 0
     set sessionoptions-=options
 
+Plug 'https://github.com/junegunn/goyo.vim'
+Plug 'https://github.com/junegunn/limelight.vim'
+    autocmd! User GoyoEnter Limelight
+    autocmd! User GoyoLeave Limelight!
+
 
 call plug#end()
 
