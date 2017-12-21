@@ -1,14 +1,13 @@
 {
   "default_hour": 9, 
-  "timeformat": "%Y-%m-%d %H:%M", 
   "linewrap": 79, 
   "encrypt": false, 
-  "editor": "gvim --nofork", 
   "default_minute": 0, 
+  "tagsymbols": "@", 
+  "editor": "vim", 
+  "timeformat": "%Y-%m-%d %H:%M", 
   "highlight": true, 
   "journals": {
-    "default": "~/Dropbox/journals/journal.txt",
-    "diss": "~/Dropbox/journals/diss.txt"
-  }, 
-  "tagsymbols": "@"
+    "default": "~/Documents/journals/journal.txt"
+  }
 }
