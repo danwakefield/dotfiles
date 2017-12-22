@@ -306,7 +306,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab                  " Use spaces not tabs
 set shiftround                 " Rounds indent to multiple of shiftwidth
-set formatoptions=croql        " Auto format text
+set formatoptions=croqlj       " Auto format text
 set completeopt+=preview
 set textwidth=78
 set magic                      " use more egrep like regex
