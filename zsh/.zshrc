@@ -20,19 +20,17 @@ fi
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 declare -a plugins
-declare -A system=( linux 1 mac 1 windows 1 bsd 1 )
+declare -i linux=1
+declare -i mac=1
 
 case "$OSTYPE" in
-    darwin*)  system[mac]=0 ;;
-    linux*)   system[linux]=0 ;;
-    bsd*)     system[bsd]=0 ;;
-    msys*)    system[windows]=0 ;;
-    *)        echo "unknown: $OSTYPE" ;;
+    darwin*)  mac=0 ;;
+    linux*)   linux=0 ;;
 esac
 
-if [[ ${system[mac]} == 0 ]]; then
+if [[ $mac == 0 ]]; then
     plugins+=bundler
-elif [[ ${system[linux]} == 0 ]]; then
+elif [[ $linux == 0 ]]; then
     plugins+=debian
 fi
 

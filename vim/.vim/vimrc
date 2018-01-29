@@ -18,7 +18,7 @@ Plug 'https://github.com/chriskempson/base16-vim'
 " Plug 'https://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
 "Autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --gocode-completer'}
+Plug 'Valloric/YouCompleteMe', {'do': './install.py --gocode-completer'}
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_min_num_identifier_candidate_chars = 2
     let g:ycm_collect_identifiers_from_tags_files = 1
@@ -59,7 +59,7 @@ Plug 'thoughtbot/vim-rspec'
   if has("mac")
     let g:rspec_runner = "os_x_iterm2"
   endif
-  let g:rspec_command = "rspec -fd {spec}"
+  let g:rspec_command = "rspec --seed=$RANDOM -fd {spec}"
 
 " GO
 Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
@@ -87,7 +87,7 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     augroup END
 
 " Git integration
-Plug 'git.zip'
+Plug 'https://github.com/vim-scripts/git.zip'
 Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/neoclide/vim-easygit'
     let g:easygit_enable_command = 1
@@ -116,9 +116,9 @@ Plug 'https://github.com/easymotion/vim-easymotion'
     map <Leader>s <Plug>(easymotion-overwin-f2)
     nmap s <Plug>(easymotion-overwin-f)
     let g:EasyMotion_smartcase = 1
-Plug 'repeat.vim'
-Plug 'surround.vim'
-Plug 'Tabmerge'
+Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/vim-scripts/Tabmerge'
     nnoremap <leader>tm :Tabmerge right<CR>
 Plug 'https://github.com/bling/vim-airline'
     set laststatus=2
@@ -165,13 +165,21 @@ Plug 'https://github.com/mileszs/ack.vim'
         let g:ackprg = 'ag --vimgrep'
     endif
 
-" TODO: Replace with https://github.com/Yggdroot/LeaderF
-Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-    let g:ctrlp_cmd = 'CtrlP'
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_switch_buffer = '0'
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
+Plug 'https://github.com/Yggdroot/LeaderF', { 'do': './install.sh' }
+    let g:Lf_ShortcutF = '<C-P>'
+    let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
+    let g:Lf_WindowHeight = 0.30
+    let g:Lf_UseMemoryCache = 0
+    let g:Lf_UseCache = 0
+    highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
+    highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
+
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim'
+"     let g:ctrlp_cmd = 'CtrlP'
+"     let g:ctrlp_working_path_mode = 'ra'
+"     let g:ctrlp_switch_buffer = '0'
+"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"     let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 
 Plug 'https://github.com/luochen1990/rainbow'
     let g:rainbow_active = 1
