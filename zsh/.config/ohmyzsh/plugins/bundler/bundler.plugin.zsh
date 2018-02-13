@@ -69,6 +69,7 @@ bundle_install() {
   else
     echo "Can't 'bundle install' outside a bundled project"
   fi
+  afplay /System/Library/Sounds/Ping.aiff
 }
 
 _bundler-installed() {
@@ -98,6 +99,7 @@ _run-with-bundler() {
   else
     $@
   fi
+  afplay /System/Library/Sounds/Ping.aiff
 }
 
 ## Main program
