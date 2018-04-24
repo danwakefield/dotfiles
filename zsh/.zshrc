@@ -18,6 +18,7 @@ if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
     export BULLETTRAIN_CONTEXT_SHOW=true
 fi
 
+
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 declare -a plugins
 declare -i linux=1
@@ -72,6 +73,7 @@ fi
 
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f $HOME/src/google-cloud-sdk/path.zsh.inc ]; then
