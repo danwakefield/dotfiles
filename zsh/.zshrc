@@ -10,6 +10,7 @@ export GOROOT=/usr/local/go
 export TERM='xterm-256color'
 export NVM_LAZY_LOAD=true
 export NVM_DIR=$XDG_CONFIG_HOME/nvm
+export LESS="-F -X $LESS"
 
 # ZSH_THEME="xiong-chiamiov-plus"
 ZSH_THEME="bullettrain"
@@ -17,6 +18,17 @@ export BULLETTRAIN_DIR_EXTENDED=2
 if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
     export BULLETTRAIN_CONTEXT_SHOW=true
 fi
+export BULLETTRAIN_PROMPT_ORDER=(
+    time
+    status
+    custom
+    context
+    dir
+    perl
+    git
+    hg
+    cmd_exec_time
+  )
 
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
