@@ -43,8 +43,6 @@ Plug 'https://github.com/muziqiushan/vim-bufonly'
 Plug 'https://github.com/tpope/vim-endwise'
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/tmhedberg/SimpylFold'
-" Plug 'https://github.com/posva/vim-vue'
-" Plug 'https://github.com/wookiehangover/jshint.vim'
 Plug 'https://github.com/sheerun/vim-polyglot'
     let g:polyglot_disabled = ['go']
 " Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
@@ -87,10 +85,6 @@ Plug 'https://github.com/fatih/vim-go', {'for': 'go'}
     augroup END
 
 " Git integration
-" Plug 'https://github.com/vim-scripts/git.zip'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'https://github.com/neoclide/vim-easygit'
-"     let g:easygit_enable_command = 1
 Plug 'https://github.com/rhysd/committia.vim'
 
 " Utility
@@ -102,20 +96,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/airblade/vim-rooter'
     let g:rooter_change_directory_for_non_project_files = 'current'
 Plug 'https://github.com/ciaranm/detectindent'
-" Plug 'https://github.com/tmhedberg/matchit'
 Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'https://github.com/tpope/vim-abolish'
     " crs = snake_case
     " crm = MixedCase
     " crc = camelCase
     " cru = UPPER_CASE
-" Plug 'https://github.com/easymotion/vim-easymotion'
-"     map <Leader>j <Plug>(easymotion-j)
-"     map <Leader>k <Plug>(easymotion-k)
-"     map <Leader>w <Plug>(easymotion-w)
-"     map <Leader>s <Plug>(easymotion-overwin-f2)
-"     nmap s <Plug>(easymotion-overwin-f)
-"     let g:EasyMotion_smartcase = 1
 Plug 'https://github.com/tpope/vim-repeat'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/vim-scripts/Tabmerge'
@@ -171,15 +157,9 @@ Plug 'https://github.com/Yggdroot/LeaderF', { 'do': './install.sh' }
     let g:Lf_WindowHeight = 0.30
     let g:Lf_UseMemoryCache = 0
     let g:Lf_UseCache = 0
+    let g:Lf_DefaultMode = "NameOnly"
     highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
     highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
-
-" Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-"     let g:ctrlp_cmd = 'CtrlP'
-"     let g:ctrlp_working_path_mode = 'ra'
-"     let g:ctrlp_switch_buffer = '0'
-"     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-"     let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:25'
 
 Plug 'https://github.com/luochen1990/rainbow'
     let g:rainbow_active = 1
@@ -197,12 +177,11 @@ Plug 'https://github.com/luochen1990/rainbow'
         \   }
         \}
 
-" Plug 'https://github.com/junegunn/vim-peekaboo'
 Plug 'https://github.com/milkypostman/vim-togglelist'
 Plug 'https://github.com/jlanzarotta/bufexplorer'
     let g:bufExplorerFindActive = 0        " Do not go to active window.
 
-Plug 'https://github.com/Yggdroot/indentLine'
+Plug 'https://github.com/Yggdroot/indentLine', {'on': 'InlineLineToggle'}
     " :IndentLineToggle
     let g:indentLine_char = '┆'
     let g:indentLine_enabled = 0
@@ -279,11 +258,6 @@ Plug 'https://github.com/xolox/vim-session'
     let g:session_lock_enabled = 0
     let g:session_persist_colors = 0
     set sessionoptions-=options
-
-" Plug 'https://github.com/junegunn/goyo.vim'
-" Plug 'https://github.com/junegunn/limelight.vim'
-"     autocmd! User GoyoEnter Limelight
-"     autocmd! User GoyoLeave Limelight!
 
 
 call plug#end()
