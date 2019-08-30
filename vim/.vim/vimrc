@@ -13,7 +13,7 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-" Plug 'ScrollColors'
+" Plug 'https://github.com/vim-scripts/ScrollColors'
 Plug 'https://github.com/chriskempson/base16-vim'
 " Plug 'https://github.com/daylerees/colour-schemes', {'rtp': 'vim'}
 
@@ -181,11 +181,6 @@ Plug 'https://github.com/milkypostman/vim-togglelist'
 Plug 'https://github.com/jlanzarotta/bufexplorer'
     let g:bufExplorerFindActive = 0        " Do not go to active window.
 
-Plug 'https://github.com/Yggdroot/indentLine', {'on': 'InlineLineToggle'}
-    " :IndentLineToggle
-    let g:indentLine_char = '┆'
-    let g:indentLine_enabled = 0
-
 Plug 'https://github.com/tpope/vim-commentary'
 
 Plug 'https://github.com/scrooloose/nerdtree'
@@ -222,8 +217,6 @@ Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
 Plug 'https://github.com/terryma/vim-expand-region'
 Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/kana/vim-textobj-line'
-Plug 'https://github.com/AndrewRadev/inline_edit.vim', {'on': 'InlineEdit'}
-    nnoremap <leader>ie :InlineEdit<CR>
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/majutsushi/tagbar'
@@ -332,6 +325,17 @@ if has("gui_running")
     set guioptions-=T
     set lines=999
     set columns=220
+
+    " Fixes the issue where errors are displayed as background color and
+    " almost invisible when cursor in on the line
+    function! s:base16_customize() abort
+      call Base16hi("Error", g:base16_gui05, g:base16_gui08, g:base16_cterm05, g:base16_cterm08, "", "")
+    endfunction
+
+    augroup on_change_colorschema
+      autocmd!
+      autocmd ColorScheme * call s:base16_customize()
+    augroup END
     colorscheme base16-google-dark
 else
     set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
