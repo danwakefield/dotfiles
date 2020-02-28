@@ -1,4 +1,6 @@
 .ropeproject
 .git
 .__pycache__
+tags.temp
+tags.temp.tmp
 
