@@ -25,6 +25,9 @@ Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
     let g:ycm_add_preview_to_completeopt = 1
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_filetype_blacklist = {
+        \ 'php': 1,
+        \}
     nnoremap <leader>wg :YcmCompleter GoTo<CR>
     nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>wc :YcmCompleter GoToDeclaration<CR>
@@ -88,10 +91,10 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/rhysd/committia.vim'
 Plug 'https://github.com/k0kubun/vim-open-github'
     if has("mac")
-        if empty(glob('/usr/local/Cellar/ruby/2.6.2/lib/libruby.dylib'))
-            echo "Change the ruby dylib path in vimrc"
+        if empty(glob('/usr/local/Cellar/ruby/2.7.1_2/lib/libruby.dylib'))
+            echo "You wrote this😂: Edit rubydll in .vim/vimrc to match the new version"
         end
-        set rubydll=/usr/local/Cellar/ruby/2.6.2/lib/libruby.dylib
+        set rubydll=/usr/local/Cellar/ruby/2.7.1_2/lib/libruby.dylib
     endif
 
 " Utility

@@ -25,6 +25,7 @@ bundled_commands=(
   rackup
   rainbows
   rake
+  rails
   rspec
   shotgun
   sidekiq

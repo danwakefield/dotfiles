@@ -261,6 +261,7 @@ REGEXS = [
     re.compile("""
     (?P<SN>.*?)         # Named Group (SN) non greedily capturing show name
     s                   # Letter S representing season
+    e?                  # Optional E
     (?P<S>\d{1,2})      # Named Group (S) capturing 1/2 digits for season no
     [\W_]?              # Single Optional Non Alpha-Num char
     e                   # Letter E representing Episode
