@@ -2,6 +2,9 @@
 scriptencoding utf-8
 set encoding=utf-8
 
+" set pythonthreedll=/usr/local/Cellar/python@3.9/3.9.1_3/Frameworks/Python.framework/Versions/3.9/Python
+" set pythonthreehome=/usr/local/Cellar/python@3.9/3.9.1_3/Frameworks/Python.framework/Versions/3.9
+
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
@@ -17,7 +20,7 @@ call plug#begin('~/.vim/bundle')
 Plug 'https://github.com/chriskempson/base16-vim'
 
 "Autocomplete
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'Valloric/YouCompleteMe', {'do': '/usr/local/bin/python3 ./install.py'}
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_min_num_identifier_candidate_chars = 2
     let g:ycm_collect_identifiers_from_tags_files = 1
@@ -27,6 +30,7 @@ Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_filetype_blacklist = {
         \ 'php': 1,
+        \ 'java': 1,
         \}
     nnoremap <leader>wg :YcmCompleter GoTo<CR>
     nnoremap <leader>wd :YcmCompleter GoToDefinition<CR>
@@ -91,10 +95,10 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/rhysd/committia.vim'
 Plug 'https://github.com/k0kubun/vim-open-github'
     if has("mac")
-        if empty(glob('/usr/local/Cellar/ruby/2.7.1_2/lib/libruby.dylib'))
+        if empty(glob('/usr/local/Cellar/ruby/3.0.1/lib/libruby.dylib'))
             echo "You wrote this😂: Edit rubydll in .vim/vimrc to match the new version"
         end
-        set rubydll=/usr/local/Cellar/ruby/2.7.1_2/lib/libruby.dylib
+        set rubydll=/usr/local/Cellar/ruby/3.0.1/lib/libruby.dylib
     endif
 
 " Utility
@@ -150,6 +154,7 @@ Plug 'https://github.com/mileszs/ack.vim'
     endif
 
 Plug 'https://github.com/Yggdroot/LeaderF', { 'do': './install.sh' }
+    let g:Lf_PythonVersion = 3
     let g:Lf_ShortcutF = '<C-P>'
     let g:Lf_CommandMap = {'<C-C>': ['<Esc>', '<C-C>']}
     let g:Lf_WindowHeight = 0.30
@@ -193,14 +198,15 @@ Plug 'https://github.com/scrooloose/nerdtree'
     let g:NERDTreeIgnore = ['\.pyc$']
     map <F2> :NERDTreeToggle<CR>
 
-Plug 'https://github.com/dense-analysis/ale'
-    let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-    let g:ale_sign_warning = '.'
-    let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+" Plug 'https://github.com/dense-analysis/ale'
+"     let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+"     let g:ale_sign_warning = '.'
+"     let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 
-    let g:ale_linters = {
-    \   'javascript': [],
-    \}
+"     let g:ale_linters = {
+"     \   'javascript': [],
+"     \   'java': [],
+"     \}
 
     " let g:ale_ruby_rubocop_executable = 'bin/rubocop'
     " let g:ale_ruby_rubocop_options = '--config /Users/danielwakefield/code/gc/payments-service/.rubocop.yml'
@@ -228,9 +234,9 @@ Plug 'https://github.com/dense-analysis/ale'
 
 "     let g:syntastic_markdown_checkers = []
 
-Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
-    let g:gundo_prefer_python3 = 1
-    map <F3> :GundoToggle<CR>
+" Plug 'https://github.com/sjl/gundo.vim.git', {'on': 'GundoToggle'}
+"     let g:gundo_prefer_python3 = 1
+"     map <F3> :GundoToggle<CR>
 
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/terryma/vim-expand-region'
@@ -238,24 +244,7 @@ Plug 'https://github.com/kana/vim-textobj-user'
 Plug 'https://github.com/kana/vim-textobj-line'
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
-Plug 'https://github.com/majutsushi/tagbar'
-    map <F8> :TagbarToggle<CR>
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
-
-Plug 'KabbAmine/zeavim.vim'
-Plug 'https://github.com/xolox/vim-misc'
-Plug 'https://github.com/xolox/vim-session'
-    map <F1> :SaveSession
-    let g:session_autoload = 'no'
-    let g:session_autosave = 'yes'
-    let g:session_default_to_last = 'no'
-    let g:session_directory = '~/.vim/sessions'
-    let g:session_autosave_periodic = 5
-    let g:session_restart_environment = ['GOPATH', 'GOROOT']
-    let g:session_lock_enabled = 0
-    let g:session_persist_colors = 0
-    set sessionoptions-=options
-
 
 call plug#end()
 

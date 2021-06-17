@@ -106,6 +106,8 @@ setopt HIST_SAVE_NO_DUPS      # Don't write duplicate entries in the history fil
 setopt HIST_REDUCE_BLANKS     # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY            # Don't execute immediately upon history expansion.
 setopt HIST_BEEP              # Beep when accessing nonexistent history.
+export HISTSIZE=999999999999999
+export SAVEHIST=$HISTSIZE
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f $HOME/src/google-cloud-sdk/path.zsh.inc ]; then
