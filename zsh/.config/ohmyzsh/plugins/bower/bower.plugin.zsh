@@ -1,4 +1,6 @@
 alias bi="bower install"
+alias bisd="bower install --save-dev"
+alias bis="bower install --save"
 alias bl="bower list"
 alias bs="bower search"
 
@@ -72,6 +74,7 @@ _bower ()
         compadd "$@" $(echo $bower_package_list)
         ;;
         *)
+        _arguments \
         $_no_color \
         ;;
     esac
