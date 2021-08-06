@@ -70,7 +70,9 @@ plugins+=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-PATH="/usr/local/bin"
+PATH="/usr/local/opt/coreutils/libexec/gnubin"
+PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
+PATH="$PATH:/usr/local/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/bin"
 PATH="$PATH:/usr/sbin"
@@ -80,11 +82,6 @@ PATH="$PATH:$GOROOT/bin"
 PATH="$PATH:$GOPATH/bin"
 PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/.composer/vendor/bin"
-PATH="$PATH:/usr/games"
-PATH="$PATH:/usr/local/games"
-PATH="$PATH:/usr/local/heroku/bin"
-PATH="$PATH:$HOME/code/pebble/sdk/bin"
-PATH="$PATH:/Users/danielwakefield/code/py/anaconda3/bin"
 export PATH
 
 if [ ! $commands[fasd] ]; then
@@ -126,3 +123,4 @@ export LS_COLORS
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

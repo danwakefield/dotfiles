@@ -95,10 +95,10 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'https://github.com/rhysd/committia.vim'
 Plug 'https://github.com/k0kubun/vim-open-github'
     if has("mac")
-        if empty(glob('/usr/local/Cellar/ruby/3.0.1/lib/libruby.dylib'))
+        if empty(glob('/usr/local/Cellar/ruby/3.0.2/lib/libruby.dylib'))
             echo "You wrote this😂: Edit rubydll in .vim/vimrc to match the new version"
         end
-        set rubydll=/usr/local/Cellar/ruby/3.0.1/lib/libruby.dylib
+        set rubydll=/usr/local/Cellar/ruby/3.0.2/lib/libruby.dylib
     endif
 
 " Utility
@@ -109,6 +109,9 @@ Plug 'junegunn/fzf.vim'
     endif
 Plug 'https://github.com/airblade/vim-rooter'
     let g:rooter_change_directory_for_non_project_files = 'current'
+    " defaults with `.projectroot` added so we support monorepo layouts. Have
+    " to add it to the global gitignore
+    let g:rooter_patterns = ['.projectroot', '.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json']
 Plug 'https://github.com/ciaranm/detectindent'
 Plug 'https://github.com/tpope/vim-eunuch'
 Plug 'https://github.com/tpope/vim-abolish'
@@ -245,6 +248,8 @@ Plug 'https://github.com/kana/vim-textobj-line'
 Plug 'https://github.com/jez/vim-superman'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
 Plug 'https://github.com/ludovicchabant/vim-gutentags'
+    let g:gutentags_ctags_tagfile = 'gutentags'
+    let g:gutentags_project_root = ['.projectroot']
 
 call plug#end()
 
