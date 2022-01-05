@@ -57,7 +57,6 @@ fi
 
 plugins+=(
     rsync
-    zsh-nvm
     git
     git-extras
     extract
@@ -72,6 +71,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 PATH="/usr/local/opt/coreutils/libexec/gnubin"
 PATH="$PATH:/usr/local/opt/gnu-sed/libexec/gnubin"
+PATH="$PATH:/usr/local/opt/findutils/libexec/gnubin"
 PATH="$PATH:/usr/local/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/bin"
@@ -84,9 +84,9 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH
 
-if [ ! $commands[fasd] ]; then
-    echo "Install fasd: https://github.com/clvv/fasd"
-fi
+# if [ ! $commands[fasd] ]; then
+#     echo "Install fasd: https://github.com/clvv/fasd"
+# fi
 
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 
@@ -123,4 +123,3 @@ export LS_COLORS
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
