@@ -156,31 +156,8 @@ _git-bug() {
 }
 
 
-_git-bug() {
-    local curcontext=$curcontext state line ret=1
-    declare -A opt_args
-
-    _arguments -C \
-        ': :->command' \
-        '*:: :->option-or-argument' && ret=0
-
-    case $state in
-        (command)
-            declare -a commands
-            commands=(
-                'finish:merge bug into the current branch'
-            )
-            _describe -t commands command commands && ret=0
-            ;;
-        (option-or-argument)
-            curcontext=${curcontext%:*}-$line[1]:
-            case $line[1] in
-                (finish)
-                    _arguments -C \
-                        ':branch-name:__gitex_bug_branch_names'
-                    ;;
-            esac
-    esac
+    _arguments \
+        '(--remote -r)'{--remote,-r}'[setup remote tracking branch]'
 }
 
 _git-chore() {
@@ -373,27 +350,6 @@ _git-merge-into() {
         ':src:__gitex_branch_names' \
         ':dest:__gitex_branch_names'
 }
-
-_git-missing() {
-    _arguments \
-        ':first-branch-name:__gitex_branch_names' \
-        ':second-branch-name:__gitex_branch_names'
-}
-
-
-_git-graft() {
-    _arguments \
-        ':src-branch-name:__gitex_branch_names' \
-        ':dest-branch-name:__gitex_branch_names'
-}
-
-
-_git-ignore() {
-    _arguments  -C \
-        '(--local -l)'{--local,-l}'[show local gitignore]' \
-        '(--global -g)'{--global,-g}'[show global gitignore]'
-}
-
 
 _git-missing() {
     _arguments \
