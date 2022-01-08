@@ -20,24 +20,6 @@ export NVM_DIR=$XDG_CONFIG_HOME/nvm
 export LESS="-F -X $LESS"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="xiong-chiamiov-plus"
-# ZSH_THEME="bullettrain"
-# export BULLETTRAIN_DIR_EXTENDED=2
-# if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-#     export BULLETTRAIN_CONTEXT_SHOW=true
-# fi
-# export BULLETTRAIN_PROMPT_ORDER=(
-#     time
-#     status
-#     custom
-#     context
-#     dir
-#     perl
-#     git
-#     hg
-#     cmd_exec_time
-#   )
-
 
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 declare -a plugins
@@ -45,25 +27,29 @@ declare -i linux=1
 declare -i mac=1
 
 case "$OSTYPE" in
-    darwin*)  mac=0 ;;
-    linux*)   linux=0 ;;
+  darwin*)  mac=0 ;;
+  linux*)   linux=0 ;;
 esac
 
 if [[ $mac == 0 ]]; then
-    plugins+=bundler
+  plugins+=(
+    bundler
+  )
 elif [[ $linux == 0 ]]; then
-    plugins+=debian
+  plugins+=debian
 fi
 
 plugins+=(
-    rsync
-    git
-    git-extras
-    extract
-    common-aliases
-    virtualenv
-    docker-compose
-    fasd
+  rsync
+  nvm
+  git
+  git-extras
+  extract
+  common-aliases
+  virtualenv
+  docker-compose
+  fasd
+  ag
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -84,9 +70,9 @@ PATH="$PATH:$HOME/bin"
 PATH="$PATH:$HOME/.composer/vendor/bin"
 export PATH
 
-# if [ ! $commands[fasd] ]; then
-#     echo "Install fasd: https://github.com/clvv/fasd"
-# fi
+if [ ! $commands[fasd] ]; then
+  echo "Install fasd: https://github.com/clvv/fasd"
+fi
 
 [[ -r $HOME/.custom_vars.sh ]] && source $HOME/.custom_vars.sh
 
