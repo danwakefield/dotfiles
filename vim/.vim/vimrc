@@ -387,13 +387,18 @@ endif
 let g:markdown_fenced_languages = ['asm', 'sh', 'bash=sh', 'c', 'python', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 augroup txt_files
     autocmd!
-    autocmd FileType text,markdown,gitcommit setl nocindent spell wrapmargin=0 wrap
+    autocmd FileType text,markdown,gitcommit setl nocindent spell wrapmargin=0 wrap colorcolumn=
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
 augroup asm
     autocmd!
     autocmd FileType asm setlocal ft=nasm
+augroup END
+
+augroup rb
+    autocmd!
+    autocmd FileType ruby,rb,erb setl colorcolumn=
 augroup END
 
 nnoremap K :silent lgrep! "\b<C-R><C-W>\b"<CR>:lwindow<CR>

@@ -42,6 +42,7 @@ elif [[ $linux == 0 ]]; then
 fi
 
 plugins+=(
+  rails
   bundler
   git
   extract
