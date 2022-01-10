@@ -61,9 +61,11 @@ export LS_COLORS
 
 source $ZSH/oh-my-zsh.sh
 
+export _HOMEBREW_PREFIX="$(brew --prefix)"
 # User configuration
 PATH="/bin"
 PATH="$PATH:/usr/local/bin"
+PATH="$PATH:${_HOMEBREW_PREFIX}/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/usr/sbin"
 PATH="$PATH:/usr/bin"
