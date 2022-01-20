@@ -66,11 +66,13 @@ source $ZSH/oh-my-zsh.sh
 PATH="/bin"
 PATH="$PATH:/usr/local/bin"
 
-if [ $commands[brew] ]; then
-  export _HOMEBREW_PREFIX="$(brew --prefix)"
-  PATH="$PATH:${_HOMEBREW_PREFIX}/bin"
+if [ -d '/opt/homebrew' ]; then
+  export _HOMEBREW_PREFIX="/opt/homebrew"
+elif [ -d '/usr/local/Cellar' ]; then
+  export _HOMEBREW_PREFIX="/opt/homebrew"
 fi
 
+PATH="$PATH:${_HOMEBREW_PREFIX}/bin"
 PATH="$PATH:/sbin"
 PATH="$PATH:/usr/sbin"
 PATH="$PATH:/usr/bin"
