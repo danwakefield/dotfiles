@@ -247,6 +247,9 @@ Plug 'https://github.com/scrooloose/nerdtree'
 "     let g:gundo_prefer_python3 = 1
 "     map <F3> :GundoToggle<CR>
 
+Plug 'https://github.com/Yggdroot/indentLine'
+" :IndentLinesToggle
+
 Plug 'https://github.com/wellle/targets.vim'
 Plug 'https://github.com/terryma/vim-expand-region'
 Plug 'https://github.com/kana/vim-textobj-user'

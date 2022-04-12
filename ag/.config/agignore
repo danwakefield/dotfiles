@@ -1,6 +1,9 @@
 .ropeproject
 .git
 .__pycache__
+gutentags
+gutentags.temp
 tags.temp
 tags.temp.tmp
+*.svg
 

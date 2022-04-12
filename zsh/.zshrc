@@ -35,12 +35,14 @@ if [[ $mac == 0 ]]; then
   # gnu-utils fixes the path to each installed command
   plugins+=(
     macos
+    brew
     gnu-utils
   )
 elif [[ $linux == 0 ]]; then
   plugins+=debian
 fi
 
+# rbenv and fasd are `init`d by their plugins
 plugins+=(
   rails
   bundler
@@ -49,6 +51,7 @@ plugins+=(
   common-aliases
   virtualenv
   docker-compose
+  rbenv
   fasd
   ripgrep
   ag
@@ -69,7 +72,7 @@ PATH="$PATH:/usr/local/bin"
 if [ -d '/opt/homebrew' ]; then
   export _HOMEBREW_PREFIX="/opt/homebrew"
 elif [ -d '/usr/local/Cellar' ]; then
-  export _HOMEBREW_PREFIX="/opt/homebrew"
+  export _HOMEBREW_PREFIX="/usr/local/Cellar"
 fi
 
 PATH="$PATH:${_HOMEBREW_PREFIX}/bin"
