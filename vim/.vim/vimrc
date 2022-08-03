@@ -15,10 +15,9 @@ if empty(glob('~/.vim/bundle/'))
     autocmd VimEnter * PlugInstall
 endif
 
-
 call plug#begin('~/.vim/bundle')
 
-" Plug 'https://github.com/vim-scripts/ScrollColors'
+"Plug 'https://github.com/vim-scripts/ScrollColors'
 Plug 'https://github.com/chriskempson/base16-vim'
 
 "Autocomplete
@@ -53,6 +52,7 @@ Plug 'https://github.com/tpope/vim-endwise'
 Plug 'https://github.com/jmcantrell/vim-virtualenv', {'for': 'python'}
 Plug 'https://github.com/tmhedberg/SimpylFold'
 Plug 'https://github.com/sheerun/vim-polyglot'
+    let g:vim_markdown_conceal_code_blocks = 0
 " Plug 'https://github.com/ternjs/tern_for_vim', {'for': 'javascript', 'do': 'npm install'}
 Plug 'https://github.com/tpope/vim-rails'
 Plug 'https://github.com/christoomey/vim-rfactory'
@@ -96,6 +96,11 @@ Plug 'thoughtbot/vim-rspec'
 
 " Git integration
 Plug 'https://github.com/rhysd/committia.vim'
+" Plug 'https://github.com/ruanyl/vim-gh-line'
+"     let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
+" Plug 'https://github.com/tyru/open-browser.vim'
+" Plug 'https://github.com/tyru/open-browser-github.vim'
+    " :OpenGithubFile
 Plug 'https://github.com/k0kubun/vim-open-github'
     if has("mac")
         if empty(glob('/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib')) && empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
@@ -103,7 +108,7 @@ Plug 'https://github.com/k0kubun/vim-open-github'
         elseif empty(glob('/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib'))
             set rubydll=/opt/homebrew/opt/ruby/lib/libruby.dylib
         elseif empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
-	    set rubydll=/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib
+            set rubydll=/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib
         end
     endif
 
@@ -323,12 +328,13 @@ set listchars=tab:·\ ,trail:˽
 set grepprg=ag\ --nogroup\ --nocolor
 set grepformat=%f:%l:%m
 
+
 if has("gui_running")
     set background=dark
     if has("mac")
-        set guifont=OfficeCodePro-Regular:h12
+        set guifont=SauceCodeProNerdFontComplete-Medium:h12
     else
-        set guifont=Office\ Code\ Pro\ Medium\ 10
+        set guifont=Save\ Code\ Pro\ Nerd\ Font\ Complete\ Medium\ 10
     endif
     set guioptions-=T
     set lines=999
@@ -337,7 +343,7 @@ if has("gui_running")
     function! s:base16_customize() abort
         " Changes the background highlight color of parans when they are
         " underneath the cursor so its not so hard to tell which one we are
-        " one
+        " on
         call Base16hi("MatchParen", "", s:base16_gui02, "", s:base16_cterm02, "", "")
         " Fixes the issue where errors are displayed as background color and
         " almost invisible when cursor in on the line
@@ -350,11 +356,29 @@ if has("gui_running")
     augroup END
     colorscheme base16-google-dark
 else
-    set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
+    " Needs https://github.com/chriskempson/base16-shell setup so colors are
+    " set in the shell properly
+    let base16colorspace=256
     set background=dark
-    colorscheme delek
+    set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
     highlight SpellBad ctermbg=000 ctermfg=9
     au Filetype gitcommit highlight SyntaxError ctermbg=000 ctermfg=9
+
+    colorscheme base16-google-dark
+    function! s:base16_customize() abort
+        " Changes the background highlight color of parans when they are
+        " underneath the cursor so its not so hard to tell which one we are
+        " on
+        call Base16hi("MatchParen", "", "", "", s:cterm02, "", "")
+        " Fixes the issue where errors are displayed as background color and
+        " almost invisible when cursor in on the line
+        call Base16hi("Error", "", "", s:cterm05, s:cterm08, "", "")
+    endfunction
+
+    augroup on_change_colorschema
+        autocmd!
+        autocmd ColorScheme * call s:base16_customize()
+    augroup END
 endif
 
 let mapleader = '\'
@@ -402,6 +426,7 @@ augroup END
 augroup rb
     autocmd!
     autocmd FileType ruby,rb,erb setl colorcolumn=
+    autocmd BufRead *.inky setlocal ft=eruby
 augroup END
 
 nnoremap K :silent lgrep! "\b<C-R><C-W>\b"<CR>:lwindow<CR>
