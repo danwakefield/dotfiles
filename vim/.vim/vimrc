@@ -361,7 +361,6 @@ else
     let base16colorspace=256
     set background=dark
     set nocursorline " Hide underline in shell. Obscures punctiation esp underscores
-    highlight SpellBad ctermbg=000 ctermfg=9
     au Filetype gitcommit highlight SyntaxError ctermbg=000 ctermfg=9
 
     colorscheme base16-google-dark
@@ -373,6 +372,7 @@ else
         " Fixes the issue where errors are displayed as background color and
         " almost invisible when cursor in on the line
         call Base16hi("Error", "", "", s:cterm05, s:cterm08, "", "")
+        highlight SpellBad ctermbg=000 ctermfg=11
     endfunction
 
     augroup on_change_colorschema
@@ -416,6 +416,8 @@ augroup txt_files
     autocmd!
     autocmd FileType text,markdown,gitcommit setl nocindent spell wrapmargin=0 wrap colorcolumn=
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    au Filetype gitcommit au! BufEnter COMMIT_EDITMSG highlight SpellBad ctermbg=000 ctermfg=11
+    au Filetype gitcommit au! BufEnter PULLREQ_EDITMSG highlight SpellBad ctermbg=000 ctermfg=11
 augroup END
 
 augroup asm
