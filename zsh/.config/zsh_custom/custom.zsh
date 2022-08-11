@@ -41,8 +41,6 @@ unalias j
 # Dont like p
 alias p='false'
 unalias p
-# Set gp to git push + push origin if branch doesnt exist
-unalias gp
 
 for source_file in $ZSH_CUSTOM/*.sh; do
     if [[ -r $source_file ]]; then
