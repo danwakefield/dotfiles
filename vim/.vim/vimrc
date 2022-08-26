@@ -96,19 +96,14 @@ Plug 'thoughtbot/vim-rspec'
 
 " Git integration
 Plug 'https://github.com/rhysd/committia.vim'
-" Plug 'https://github.com/ruanyl/vim-gh-line'
-"     let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
-" Plug 'https://github.com/tyru/open-browser.vim'
-" Plug 'https://github.com/tyru/open-browser-github.vim'
-    " :OpenGithubFile
 Plug 'https://github.com/k0kubun/vim-open-github'
     if has("mac")
-        if empty(glob('/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib')) && empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
+        if empty(glob('/usr/local/Cellar/ruby/3.1.1/lib/libruby.dylib')) && empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
             echo "You wrote this😂: Edit rubydll in .vim/vimrc to match the new version"
-        elseif empty(glob('/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib'))
+        elseif empty(glob('/usr/local/Cellar/ruby/3.1.1/lib/libruby.dylib'))
             set rubydll=/opt/homebrew/opt/ruby/lib/libruby.dylib
         elseif empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
-            set rubydll=/usr/local/Cellar/ruby/3.0.3/lib/libruby.dylib
+            set rubydll=/usr/local/Cellar/ruby/3.1.1/lib/libruby.dylib
         end
     endif
 
@@ -175,6 +170,8 @@ Plug 'https://github.com/Yggdroot/LeaderF', { 'do': './install.sh' }
     let g:Lf_UseMemoryCache = 0
     let g:Lf_UseCache = 0
     let g:Lf_DefaultMode = "NameOnly"
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PreviewInPopup = 1
     highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
     highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
 
