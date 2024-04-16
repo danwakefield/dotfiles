@@ -1,4 +1,8 @@
 " :vim fdm=marker:
+if has('python3')
+endif
+
+
 set pyxversion=3
 scriptencoding utf-8
 set encoding=utf-8
@@ -23,6 +27,8 @@ Plug 'https://github.com/chriskempson/base16-vim'
 "Autocomplete
 " ENSURE THIS IS INSTALLED WITH PYTHON3. IF NOT YOU WILL SEE 'cannot use :py3 after :python'
 Plug 'Valloric/YouCompleteMe', {'do': '/usr/local/bin/python3 ./install.py'}
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
     let g:ycm_min_num_of_chars_for_completion = 2
     let g:ycm_min_num_identifier_candidate_chars = 2
     let g:ycm_collect_identifiers_from_tags_files = 1
@@ -97,6 +103,7 @@ Plug 'thoughtbot/vim-rspec'
 " Git integration
 Plug 'https://github.com/rhysd/committia.vim'
 Plug 'https://github.com/k0kubun/vim-open-github'
+    let g:browser_command = "open -na 'Google Chrome' -u %URL% "
     if has("mac")
         if empty(glob('/usr/local/Cellar/ruby/3.1.1/lib/libruby.dylib')) && empty(glob('/opt/homebrew/opt/ruby/lib/libruby.dylib'))
             echo "You wrote this😂: Edit rubydll in .vim/vimrc to match the new version"
@@ -172,6 +179,7 @@ Plug 'https://github.com/Yggdroot/LeaderF', { 'do': './install.sh' }
     let g:Lf_DefaultMode = "NameOnly"
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PreviewInPopup = 1
+    let g:Lf_UseVersionControlTool = 0
     highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=21
     highlight Lf_hl_matchRefine  gui=bold guifg=Magenta cterm=bold ctermfg=201
 
@@ -365,10 +373,10 @@ else
         " Changes the background highlight color of parans when they are
         " underneath the cursor so its not so hard to tell which one we are
         " on
-        call Base16hi("MatchParen", "", "", "", s:cterm02, "", "")
+        call Base16hi("MatchParen", "", "", "", g:base16_cterm02, "", "")
         " Fixes the issue where errors are displayed as background color and
         " almost invisible when cursor in on the line
-        call Base16hi("Error", "", "", s:cterm05, s:cterm08, "", "")
+        call Base16hi("Error", "", "", g:base16_cterm05, g:base16_cterm08, "", "")
         highlight SpellBad ctermbg=000 ctermfg=11
     endfunction
 
@@ -393,6 +401,8 @@ function! WriteCreatingDirs()
 endfunction
 command! W call WriteCreatingDirs()
 command! -nargs=+ -complete=file -bar Agg silent! lgrep! <args>|cwindow|redraw!
+
+command AC :execute "vnew " . eval('rails#buffer().alternate()')
 
 if exists("+undofile")
     " undofile - This allows you to use undos after exiting and restarting
@@ -501,3 +511,7 @@ nnoremap <leader>et :tabe %%
 " Make all symbols magic. No need to escape parans, *, ? etc
 nnoremap / /\v
 vnoremap / /\v
+
+
+" Autocorrections
+iab perfrom perform
